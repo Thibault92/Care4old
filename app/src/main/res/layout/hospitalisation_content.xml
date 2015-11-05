@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Date d'entrée : "
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:gravity="center"/>
+
+    <EditText
+
+        android:id="@+id/date_entree"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date d'entrée"
+        android:inputType="numberDecimal"/>
+
+    <TextView
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Date de sortie : "
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:gravity="center"/>
+
+    <EditText
+
+        android:id="@+id/date_sortie"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date de sortie"
+        android:inputType="numberDecimal"/>
+
+    <TextView
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Raison : "
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:gravity="center"/>
+
+    <EditText
+
+        android:id="@+id/raison"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Raison"
+        android:inputType="numberDecimal"/>
+
+
+</LinearLayout>
