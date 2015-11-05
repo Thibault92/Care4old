@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    >
+    <TableRow>
 
     <TextView
 
@@ -22,6 +25,9 @@
         android:hint="Date d'entrée"
         android:inputType="numberDecimal"/>
 
+    </TableRow>
+
+    <TableRow>
     <TextView
 
         android:layout_width="fill_parent"
@@ -39,6 +45,8 @@
         android:hint="Date de sortie"
         android:inputType="numberDecimal"/>
 
+    </TableRow>
+<TableRow>
     <TextView
 
         android:layout_width="fill_parent"
@@ -55,6 +63,6 @@
         android:layout_height="wrap_content"
         android:hint="Raison"
         android:inputType="numberDecimal"/>
+</TableRow>
 
-
-</LinearLayout>
+</TableLayout>
