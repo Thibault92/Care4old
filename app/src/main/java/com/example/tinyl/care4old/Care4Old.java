@@ -1,5 +1,6 @@
 package com.example.tinyl.care4old;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 public class Care4Old extends AppCompatActivity {
 
@@ -48,5 +50,17 @@ public class Care4Old extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void sendPsycho(View view)
+    {
+        Intent intent = new Intent(Care4Old.this, PsychologicalTest.class);
+        startActivity(intent);
+    }
+
+    public void sendHospitalisation(View view)
+    {
+        Intent intent = new Intent(Care4Old.this, Hospitalisation.class);
+        startActivity(intent);
     }
 }

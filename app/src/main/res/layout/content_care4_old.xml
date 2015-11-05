@@ -19,6 +19,41 @@
     tools:showIn="@layout/activity_care4_old"
     tools:context=".Care4Old">
 
+    <TableRow>
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Link to Hospitalisation" />
+
+        <Button
+
+            android:id="@+id/hospitalisation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendHospitalisation"
+            android:text="Hospitalisation" />
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Link to Psycho Test" />
+
+        <Button
+
+            android:id="@+id/psycho_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendPsycho"
+            android:text="Psycho Test" />
+
+    </TableRow>
 
 
 </TableLayout>

@@ -18,6 +18,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PsychologicalTest"
+            android:label="@string/title_activity_psychological_test"
+            android:parentActivityName=".Care4Old"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tinyl.care4old.Care4Old" />
+        </activity>
+        <activity
+            android:name=".Hospitalisation"
+            android:label="@string/title_activity_hospitalisation"
+            android:parentActivityName=".Care4Old"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tinyl.care4old.Care4Old" />
+        </activity>
     </application>
 
 </manifest>
