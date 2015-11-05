@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content" >
-    <LinearLayout
+
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -20,94 +21,122 @@
             android:textStyle="bold"/>
 
         <!-- Champ 1 -->
-        <TextView
+        <TableRow>
+            <TextView
 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Ajustement Postural /8"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Ajustement Postural /8"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
 
-        <EditText
+            <Button
 
-            android:id="@+id/ajust_postural"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ajustement postural"
-            android:inputType="numberDecimal"/>
+                android:id="@+id/ajust_postural"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note"
+                android:gravity="right"
+                android:entries="@array/Notes_8"
+                />
+
+        </TableRow>
+
 
         <!-- Champ 2 -->
-        <TextView
 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Reponse Posturale /8 "
-            android:textColor="#000000"
-            android:textStyle="bold"/>
+        <TableRow>
+            <TextView
 
-        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Réponse Posturale /8"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
 
-            android:id="@+id/rep_posturale"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Reponse Posturale"
-            android:inputType="numberDecimal"/>
+            <Button
+
+                android:id="@+id/rep_posturale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note"
+                android:gravity="right"
+                android:entries="@array/Notes_8"
+                />
+
+        </TableRow>
 
         <!-- Champ 3 -->
-        <TextView
 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Orientation Sensorielle /6 "
-            android:textColor="#000000"
-            android:textStyle="bold"/>
+        <TableRow>
+            <TextView
 
-        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Orientation Sensorielle /6"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
 
-            android:id="@+id/or_sensor"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Orientation Sensorielle"
-            android:inputType="numberDecimal"/>
+            <Button
+
+                android:id="@+id/or_sensor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note"
+                android:gravity="right"
+                android:entries="@array/Notes_6"
+                />
+
+        </TableRow>
 
         <!-- Champ 4 -->
-        <TextView
+        <TableRow>
+            <TextView
 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Stabilité à la marche /10 "
-            android:textColor="#000000"
-            android:textStyle="bold"/>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Stabilité à la marche /10"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
 
-        <EditText
+            <Button
 
-            android:id="@+id/stab_march"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Stabilité à la marche"
-            android:inputType="numberDecimal"/>
+                android:id="@+id/stab_march"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note"
+                android:gravity="right"
+                android:entries="@array/Notes_10"
+                />
+
+        </TableRow>
 
         <!-- Champ 5 -->
-        <TextView
+        <TableRow>
+            <TextView
 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Total /32 "
-            android:textColor="#000000"
-            android:textStyle="bold"/>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Total /10"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
 
-        <EditText
+            <EditText
 
-            android:id="@+id/total"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Total"
-            android:inputType="numberDecimal"/>
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note Finale"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                />
+
+        </TableRow>
 
 
         <!-- Mini-Mental Test version Greco -->
@@ -122,12 +151,13 @@
             android:textStyle="bold"/>
 
 
+    <TableRow>
 
         <TextView
 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="left"
             android:text="Score Global "
             android:textColor="#000000"
             android:textStyle="bold"/>
@@ -140,9 +170,27 @@
             android:hint="Score Global"
             android:inputType="numberDecimal"/>
 
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Liste de mots utilisés: "
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+
         <!-- Liste de mots -->
 
         <!-- Liste des mots choisis -->
+
+    </TableRow>
+
+
+    <TableRow>
 
         <TextView
 
@@ -161,6 +209,10 @@
             android:hint="Score Rappel Immediat"
             android:inputType="numberDecimal"/>
 
+    </TableRow>
+
+    <TableRow>
+
         <TextView
 
             android:layout_width="fill_parent"
@@ -178,6 +230,7 @@
             android:hint="Score Rappel Différé"
             android:inputType="numberDecimal"/>
 
+    </TableRow>
 
 
         <!-- Mini GDS -->
@@ -193,24 +246,25 @@
 
         <!-- Question 1 -->
 
-        <TextView
+        <TableRow>
+            <TextView
 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Vous sentez-vous découragé et triste ?"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Vous sentez-vous découragé et triste ?"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
 
-        <!-- Answer 1 -->
-        <RadioGroup
+            <!-- Answer 1 -->
+            <RadioGroup
 
-            android:id="@+id/GDS1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkedButton="@+id/no1"
-            android:orientation="horizontal"
-            >
+                android:id="@+id/GDS1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/no1"
+                android:orientation="horizontal"
+                >
 
             <RadioButton
 
@@ -227,129 +281,146 @@
                 android:layout_height="wrap_content"
                 android:text="Non"
                 />
+            </RadioGroup>
 
-        </RadioGroup>
+        </TableRow>
 
         <!-- Question 2 -->
 
-        <TextView
+        <TableRow>
 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Etes-vous heureux la plupart du temps ?"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
+            <TextView
 
-        <!-- Answer 2 -->
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Etes-vous heureux la plupart du temps ?"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
 
-        <RadioGroup
+            <!-- Answer 2 -->
 
-            android:id="@+id/GDS2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkedButton="@+id/no2"
-            android:orientation="horizontal"
-            >
+            <RadioGroup
 
-            <RadioButton
-
-                android:id="@+id/yes2"
+                android:id="@+id/GDS2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Oui"
-                />
+                android:checkedButton="@+id/no2"
+                android:orientation="horizontal"
+                >
 
-            <RadioButton
+                <RadioButton
 
-                android:id="@+id/no2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Non"
-                />
+                    android:id="@+id/yes2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Oui"
+                    />
 
-        </RadioGroup>
+                <RadioButton
+
+                    android:id="@+id/no2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Non"
+                    />
+
+            </RadioGroup>
+
+        </TableRow>
+
 
         <!-- Question 3 -->
 
-        <TextView
+        <TableRow>
 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Avez vous le sentiment que votre vie est vide ?"
-            android:textColor="#000000"
-            android:textStyle="bold" />
+            <TextView
 
-        <!-- Answer 2 -->
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Avez vous le sentiment que votre vie est vide ?"
+                android:textColor="#000000"
+                android:textStyle="bold" />
 
-        <RadioGroup
+            <!-- Answer 2 -->
 
-            android:id="@+id/GDS3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkedButton="@+id/no3"
-            android:orientation="horizontal"
-            >
+            <RadioGroup
 
-            <RadioButton
-
-                android:id="@+id/yes3"
+                android:id="@+id/GDS3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Oui"
-                />
+                android:checkedButton="@+id/no3"
+                android:orientation="horizontal"
+                >
 
-            <RadioButton
+                <RadioButton
 
-                android:id="@+id/no3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Non"
-                />
+                    android:id="@+id/yes3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Oui"
+                    />
 
-        </RadioGroup>
+                <RadioButton
+
+                    android:id="@+id/no3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Non"
+                    />
+
+            </RadioGroup>
+
+        </TableRow>
+
 
         <!-- Question 4 -->
 
-        <TextView
+        <TableRow>
 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Avez-vous l'impression que votre vie est désespérée ?"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
+            <TextView
 
-        <!-- Answer 4 -->
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Avez-vous l'impression que votre vie est désespérée ?"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
 
-        <RadioGroup
+            <!-- Answer 4 -->
 
-            android:id="@+id/GDS4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkedButton="@+id/no4"
-            android:orientation="horizontal"
-            >
+            <RadioGroup
 
-            <RadioButton
-
-                android:id="@+id/yes4"
+                android:id="@+id/GDS4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Oui"
-                />
+                android:checkedButton="@+id/no4"
+                android:orientation="horizontal"
+                >
 
-            <RadioButton
+                <RadioButton
 
-                android:id="@+id/no4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Non"
-                />
+                    android:id="@+id/yes4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Oui"
+                    />
 
-        </RadioGroup>
+                <RadioButton
+
+                    android:id="@+id/no4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Non"
+                    />
+
+            </RadioGroup>
+
+        </TableRow>
 
 
-    </LinearLayout>
+
+
+    </TableLayout>
 </ScrollView>
