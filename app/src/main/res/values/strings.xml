@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Care4old</string>
     <string name="action_settings">Settings</string>
+    <integer-array name="Notes_8">
+        <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+    <item>7</item>
+    <item>8</item>
+    </integer-array>
+
+
 </resources>
