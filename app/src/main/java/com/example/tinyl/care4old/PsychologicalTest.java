@@ -14,6 +14,10 @@ import android.widget.Spinner;
 public class PsychologicalTest extends AppCompatActivity {
 
     private Spinner spinner1;
+    private Spinner spinner2;
+    private Spinner spinner3;
+    private Spinner spinner4;
+
 
 
     @Override
@@ -21,6 +25,8 @@ public class PsychologicalTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_psychological_test);
 
+        addListenerOnButton();
+        addListenerOnSpinnerItemSelection();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,8 +47,27 @@ public class PsychologicalTest extends AppCompatActivity {
     public void addListenerOnSpinnerItemSelection() {
         spinner1 = (Spinner) findViewById(R.id.ajust_postural);
         spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+
+        spinner2 = (Spinner) findViewById(R.id.rep_posturale);
+        spinner2.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+
+        spinner3 = (Spinner) findViewById(R.id.or_sensor);
+        spinner3.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+
+        spinner4 = (Spinner) findViewById(R.id.stab_march);
+        spinner4.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+
     }
 
+    // get the selected dropdown list value
+    public void addListenerOnButton() {
+
+        spinner1 = (Spinner) findViewById(R.id.ajust_postural);
+        spinner2 = (Spinner) findViewById(R.id.rep_posturale);
+        spinner3 = (Spinner) findViewById(R.id.or_sensor);
+        spinner4 = (Spinner) findViewById(R.id.stab_march);
+
+    }
 
 
 
