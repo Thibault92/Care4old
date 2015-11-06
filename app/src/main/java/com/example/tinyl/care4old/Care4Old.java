@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class Care4Old extends AppCompatActivity {
@@ -52,11 +53,16 @@ public class Care4Old extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void sendPsycho(View view)
-    {
-        Intent intent = new Intent(Care4Old.this, PsychologicalTest.class);
-        startActivity(intent);
-    }
+
+   // final Button click = (Button)findViewById(R.id.psycho_test);
+    //click.setOnClickListener(new View.OnClickListener() {
+        public void sendPsycho(View view)
+        {
+            Intent intent = new Intent(Care4Old.this, PsychologicalTest.class);
+            startActivity(intent);
+        }
+   // });
+
 
     public void sendHospitalisation(View view)
     {

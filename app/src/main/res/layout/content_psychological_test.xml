@@ -40,13 +40,20 @@
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
-            <Button
+         <!--    <Button
 
                 android:id="@+id/ajust_postural"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/Notes_8"
-                android:text="Note" />
+                android:text="Note" /> -->
+
+            <Spinner
+                android:id="@+id/ajust_postural"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/Notes_8"
+                android:prompt="@string/Notes"/>
 
         </TableRow>
 
@@ -64,13 +71,22 @@
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
+            <!--
             <Button
 
                 android:id="@+id/rep_posturale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/Notes_8"
-                android:text="Note" />
+                android:text="Note" /> -->
+
+            <Spinner
+                android:id="@+id/rep_posturale"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/Notes_8"
+                android:prompt="@string/Notes"/>
+
 
         </TableRow>
 
@@ -87,13 +103,19 @@
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
-            <Button
+           <!--  <Button
 
                 android:id="@+id/or_sensor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/Notes_6"
-                android:text="Note" />
+                android:text="Note" /> -->
+           <Spinner
+            android:id="@+id/or_sensor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/Notes_6"
+            android:prompt="@string/Notes"/>
 
         </TableRow>
 
@@ -109,13 +131,21 @@
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
-            <Button
+            <!-- <Button
 
                 android:id="@+id/stab_march"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/Notes_10"
-                android:text="Note" />
+                android:text="Note" /> -->
+
+
+            <Spinner
+                android:id="@+id/stab_march"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/Notes_10"
+                android:prompt="@string/Notes"/>
 
         </TableRow>
 
