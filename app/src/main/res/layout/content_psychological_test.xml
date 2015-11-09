@@ -47,13 +47,14 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/Notes_8"
                 android:text="Note" /> -->
+            <!-- android:prompt="@string/Notes"/> -->
+
 
             <Spinner
                 android:id="@+id/ajust_postural"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/Notes_8"
-                android:prompt="@string/Notes"/>
+                android:entries="@array/Notes_8"/>
 
         </TableRow>
 
@@ -79,13 +80,14 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/Notes_8"
                 android:text="Note" /> -->
+            <!-- android:prompt="@string/Notes"/> -->
+
 
             <Spinner
                 android:id="@+id/rep_posturale"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/Notes_8"
-                android:prompt="@string/Notes"/>
+                android:entries="@array/Notes_8"/>
 
 
         </TableRow>
@@ -110,12 +112,13 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/Notes_6"
                 android:text="Note" /> -->
+            <!-- android:prompt="@string/Notes"/> -->
+
            <Spinner
             android:id="@+id/or_sensor"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:entries="@array/Notes_6"/>
-           <!-- android:prompt="@string/Notes"/> -->
 
         </TableRow>
 
@@ -138,14 +141,15 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/Notes_10"
                 android:text="Note" /> -->
+            <!-- android:prompt="@string/Notes"/> -->
 
 
             <Spinner
                 android:id="@+id/stab_march"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/Notes_10"
-                android:prompt="@string/Notes"/>
+                android:entries="@array/Notes_10"/>
+
 
         </TableRow>
 
@@ -157,11 +161,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
-                android:text="Total /10"
+                android:text="Total /32"
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
-            <EditText
+            <TextView
 
                 android:id="@+id/total"
                 android:layout_width="wrap_content"
