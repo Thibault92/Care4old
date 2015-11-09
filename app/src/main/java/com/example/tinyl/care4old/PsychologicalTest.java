@@ -9,15 +9,15 @@ import android.view.View;;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 public class PsychologicalTest extends AppCompatActivity {
 
-    private Spinner spinner1;
-    private Spinner spinner2;
-    private Spinner spinner3;
-    private Spinner spinner4;
-
+    private Spinner spinner1=null;
+    private Spinner spinner2=null;
+    private Spinner spinner3=null;
+    private Spinner spinner4=null;
 
 
     @Override
@@ -27,6 +27,8 @@ public class PsychologicalTest extends AppCompatActivity {
 
         addListenerOnButton();
         addListenerOnSpinnerItemSelection();
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,6 +70,12 @@ public class PsychologicalTest extends AppCompatActivity {
         spinner4 = (Spinner) findViewById(R.id.stab_march);
 
     }
+
+    public void getValues(){
+
+    }
+
+
 
 
 

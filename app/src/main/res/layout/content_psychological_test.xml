@@ -114,8 +114,8 @@
             android:id="@+id/or_sensor"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/Notes_6"
-            android:prompt="@string/Notes"/>
+            android:entries="@array/Notes_6"/>
+           <!-- android:prompt="@string/Notes"/> -->
 
         </TableRow>
 

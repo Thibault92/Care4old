@@ -13,6 +13,7 @@ public class CustomOnItemSelectedListener implements android.widget.AdapterView.
         Toast.makeText(parent.getContext(),
                 "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
                 Toast.LENGTH_SHORT).show();
+        Object item = parent.getItemAtPosition(pos);
     }
 
     @Override

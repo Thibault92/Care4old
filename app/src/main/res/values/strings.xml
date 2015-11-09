@@ -4,6 +4,7 @@
     <string name="Notes"> Note à attribuer</string>
 
     <string-array name="Notes_8">
+        <item>Note à attribuer</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -14,6 +15,7 @@
         <item>8</item>
     </string-array>
     <string-array name="Notes_6">
+        <item>Note à attribuer</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -23,6 +25,7 @@
     </string-array>
 
     <string-array name="Notes_10">
+        <item>Note à attribuer</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
