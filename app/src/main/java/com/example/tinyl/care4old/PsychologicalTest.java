@@ -14,9 +14,9 @@ import java.util.Map;
 
 public class PsychologicalTest extends AppCompatActivity {
 
-    private String[] orientationSensorielleNotes;
-    private String[] posturalNotes;
-    private String[] marchStabilityNotes;
+   // private String[] orientationSensorielleNotes;
+   // private String[] posturalNotes;
+   // private String[] marchStabilityNotes;
 
     private Spinner[] mySpinners = new Spinner[4];
 
@@ -30,9 +30,9 @@ public class PsychologicalTest extends AppCompatActivity {
         setContentView(R.layout.activity_psychological_test);
         total = (TextView) findViewById(R.id.total_score);
 
-        orientationSensorielleNotes = getResources().getStringArray(R.array.Notes_6);
-        posturalNotes = getResources().getStringArray(R.array.Notes_8);
-        marchStabilityNotes = getResources().getStringArray(R.array.Notes_10);
+        String[] orientationSensorielleNotes = getResources().getStringArray(R.array.Notes_6);
+        String[] posturalNotes = getResources().getStringArray(R.array.Notes_8);
+        String[] marchStabilityNotes = getResources().getStringArray(R.array.Notes_10);
 
         // Array adapter to set data in Spinner Widget
         ArrayAdapter<String> adapter6 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, orientationSensorielleNotes);

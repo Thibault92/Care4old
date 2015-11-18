@@ -108,5 +108,13 @@
     <string name="question3">Avez vous le sentiment que votre vie est vide ?</string>
     <string name="question4">Avez-vous l\'impression que votre vie est désespérée ?</string>
     <string name="tinettipoma">Tinetti-Poma</string>
+    <string name="equilibre">Equilibre</string>
+    <string name="equilibresynamique">Equilibre Dynamique(marche)</string>
+    <string name="totaltinettipoma">Total Tinetti Poma</string>
+    <string name="getupandgo">Get Up and Go</string>
+    <string name="temps">Temps</string>
+    <string name="vitessemarche">Vitesse Marche (sur 4m)</string>
+    <string name="lent">Lente (secondes)</string>
+    <string name="rapide">Rapide (secondes)</string>
 
 </resources>

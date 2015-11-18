@@ -35,7 +35,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:text="@string/ajustementpostural"
+            android:text="@string/equilibre"
             android:textColor="#000000"
             android:textStyle="italic" />
 
@@ -46,6 +46,134 @@
 
     </TableRow>
 
+    <TableRow>
+
+        <TextView
+            android:id="@+id/equilibre_dynamique"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/equilibresynamique"
+            android:textColor="#000000"
+            android:textStyle="italic" />
+
+        <Spinner
+            android:id="@+id/equilibre_dynamique_score"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+
+    </TableRow>
+
+
+    <!-- Total -->
+    <TableRow>
+
+        <TextView
+
+            android:id="@+id/totaltinetti"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/totaltinettipoma"
+            android:textColor="#000000"
+            android:textStyle="italic" />
+
+        <TextView
+
+            android:id="@+id/totaltinetti_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </TableRow>
+
+
+    <TextView
+
+        android:id="@+id/getupandgo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/getupandgo"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <TableRow>
+
+        <TextView
+
+            android:id="@+id/temps"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/temps"
+            android:textColor="#000000"
+            android:textStyle="italic" />
+
+        <EditText
+
+            android:id="@+id/temps_value"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Temps"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+
+
+
+    <TextView
+
+        android:id="@+id/vitmarche"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/vitessemarche"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <TableRow>
+
+        <TextView
+
+            android:id="@+id/lente"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/lent"
+            android:textColor="#000000"
+            android:textStyle="italic" />
+
+        <EditText
+
+            android:id="@+id/lente_value"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lente"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+
+            android:id="@+id/rapide"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/rapide"
+            android:textColor="#000000"
+            android:textStyle="italic" />
+
+        <EditText
+
+            android:id="@+id/rapide_value"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rapide"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
 
 </TableLayout>
 

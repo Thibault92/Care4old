@@ -70,4 +70,11 @@ public class Care4Old extends AppCompatActivity {
         Intent intent = new Intent(Care4Old.this, Hospitalisation.class);
         startActivity(intent);
     }
+
+    public void sendKine(View view)
+    {
+        Intent intent = new Intent(Care4Old.this, KinesitherapeuticalReport.class);
+        startActivity(intent);
+    }
+
 }

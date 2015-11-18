@@ -55,6 +55,24 @@
 
     </TableRow>
 
+    <TableRow>
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Link to Kine Test" />
+
+        <Button
+
+            android:id="@+id/kine_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendKine"
+            android:text="Kine Test" />
+
+    </TableRow>
+
 
 </TableLayout>
 </ScrollView>
