@@ -36,6 +36,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tinyl.care4old.Care4Old" />
         </activity>
+        <activity
+            android:name=".Medication_Drugs"
+            android:label="@string/title_activity_medication__drugs"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".ProfessionnalAccount"
+            android:label="@string/title_activity_professionnal_account"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".MainPagePro"
+            android:label="@string/title_activity_main_page_pro"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".KinesitherapeuticalReport"
+            android:label="@string/title_activity_kinesitherapeutical_report"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class PsychologicalTest extends AppCompatActivity {
 
@@ -17,9 +20,7 @@ public class PsychologicalTest extends AppCompatActivity {
 
     private Spinner[] mySpinners = new Spinner[4];
 
-    private int[] spinnersValues = new int[4];
-
-    private int valueExtracted = 0;
+    private Map<Integer, Integer> spinnerValue = new HashMap<>();
 
     private TextView total = null;
 
@@ -55,7 +56,10 @@ public class PsychologicalTest extends AppCompatActivity {
         @Override
         public void onItemSelected(AdapterView<?> spinner, View container,int position, long id) {
             int value = Integer.parseInt((String) spinner.getItemAtPosition(position));
-            valueExtracted = value;
+
+            spinnerValue.put(spinner.getId(), value);
+            resultCalculate();
+
         }
 
         @Override
@@ -64,28 +68,21 @@ public class PsychologicalTest extends AppCompatActivity {
         }
     };
 
-
-    public void selectValue(int numQuestion, int value){
-        spinnersValues[numQuestion]=value;
-    }
-
     public void setListenerToSpinners() {
 
         for (int i = 0; i <mySpinners.length; i++) {
             mySpinners[i].setOnItemSelectedListener(valueSelectedListener);
-            selectValue(i, valueExtracted);
         }
+
     }
 
     public void resultCalculate() {
 
-        int result = spinnersValues[0];
-        for (int i = 1; i < spinnersValues.length; i++){
-
-            result += spinnersValues[i];
+        int result = 0;
+        for (Map.Entry<Integer, Integer> entry : spinnerValue.entrySet()) {
+            result += entry.getValue();
         }
-
-            total.setText(String.valueOf(result));
+        total.setText(String.valueOf(result));
     }
 
 

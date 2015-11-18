@@ -47,5 +47,9 @@
     </string-array>
     <string name="title_activity_psychological_test">PsychologicalTest</string>
     <string name="title_activity_hospitalisation">Hospitalisation</string>
+    <string name="title_activity_medication__drugs">Medication_Drugs</string>
+    <string name="title_activity_professionnal_account">ProfessionnalAccount</string>
+    <string name="title_activity_main_page_pro">MainPagePro</string>
+    <string name="title_activity_kinesitherapeutical_report">KinesitherapeuticalReport</string>
 
 </resources>
