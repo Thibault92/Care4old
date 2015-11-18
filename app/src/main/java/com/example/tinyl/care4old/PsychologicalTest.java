@@ -28,7 +28,7 @@ public class PsychologicalTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_psychological_test);
-        total = (TextView) findViewById(R.id.total);
+        total = (TextView) findViewById(R.id.total_score);
 
         orientationSensorielleNotes = getResources().getStringArray(R.array.Notes_6);
         posturalNotes = getResources().getStringArray(R.array.Notes_8);
@@ -89,10 +89,10 @@ public class PsychologicalTest extends AppCompatActivity {
 // get the selected dropdown list value
     public void addListenerOnButton() {
 
-        mySpinners[0] = (Spinner) findViewById(R.id.ajust_postural);
-        mySpinners[1] = (Spinner) findViewById(R.id.rep_posturale);
-        mySpinners[2] = (Spinner) findViewById(R.id.or_sensor);
-        mySpinners[3] = (Spinner) findViewById(R.id.stab_march);
+        mySpinners[0] = (Spinner) findViewById(R.id.ajust_postural_score);
+        mySpinners[1] = (Spinner) findViewById(R.id.rep_posturale_score);
+        mySpinners[2] = (Spinner) findViewById(R.id.or_sensor_score);
+        mySpinners[3] = (Spinner) findViewById(R.id.stab_march_score);
 
     }
 

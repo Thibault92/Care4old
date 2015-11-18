@@ -41,6 +41,44 @@
         <item>10</item>
     </string-array>
 
+    <string-array name="Notes_12">
+        <!-- <item>Note à attribuer</item> -->
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="Notes_16">
+        <!-- <item>Note à attribuer</item> -->
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+    </string-array>
+
 
     <string-array name="Word_List">
         <item>mot1</item>
@@ -51,5 +89,24 @@
     <string name="title_activity_professionnal_account">ProfessionnalAccount</string>
     <string name="title_activity_main_page_pro">MainPagePro</string>
     <string name="title_activity_kinesitherapeutical_report">KinesitherapeuticalReport</string>
+    <string name="minibesttitle">Mini-best test</string>
+    <string name="ajustementpostural">Ajustement Postural /8</string>
+    <string name="reponseposturale">Réponse Posturale /8</string>
+    <string name="sensororientation">Orientation Sensorielle /6</string>
+    <string name="marchstab">Stabilité à la marche /10</string>
+    <string name="totalminibest">Total /32</string>
+    <string name="testgreco">Mini-Mental State version Greco</string>
+    <string name="grecoscore">Score Global</string>
+    <string name="listemots">Liste de mots utilisés:</string>
+    <string name="rappelimmediat">Score Rappel Immediat</string>
+    <string name="rappeldiffere">Score Rappel Différé 1-3</string>
+    <string name="minigds">Mini GDS</string>
+    <string name="question1">Vous sentez-vous découragé et triste ?</string>
+    <string name="oui">Oui</string>
+    <string name="non">Non</string>
+    <string name="question2">Etes-vous heureux la plupart du temps ?</string>
+    <string name="question3">Avez vous le sentiment que votre vie est vide ?</string>
+    <string name="question4">Avez-vous l\'impression que votre vie est désespérée ?</string>
+    <string name="tinettipoma">Tinetti-Poma</string>
 
 </resources>

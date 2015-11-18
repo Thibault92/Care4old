@@ -14,7 +14,7 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <!-- TITRE 1 -->
@@ -25,7 +25,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Mini-best test "
+            android:text="@string/minibesttitle"
             android:textColor="#000000"
             android:textStyle="bold" />
 
@@ -33,18 +33,18 @@
         <TableRow>
 
             <TextView
+                android:id="@+id/ajust_postural"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Ajustement Postural /8"
+                android:gravity="start"
+                android:text="@string/ajustementpostural"
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
             <Spinner
-                android:id="@+id/ajust_postural"
+                android:id="@+id/ajust_postural_score"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"/>
-               <!-- android:entries="@array/Notes_8"/> -->
 
         </TableRow>
 
@@ -55,18 +55,18 @@
 
             <TextView
 
+                android:id="@+id/rep_posturale"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Réponse Posturale /8"
+                android:gravity="start"
+                android:text="@string/reponseposturale"
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
             <Spinner
-                android:id="@+id/rep_posturale"
+                android:id="@+id/rep_posturale_score"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"/>
-            <!-- android:entries="@array/Notes_8"/> -->
 
         </TableRow>
 
@@ -76,18 +76,18 @@
 
             <TextView
 
+                android:id="@+id/or_sensor"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Orientation Sensorielle /6"
+                android:gravity="start"
+                android:text="@string/sensororientation"
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
            <Spinner
-            android:id="@+id/or_sensor"
+            android:id="@+id/or_sensor_score"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
-            <!-- android:entries="@array/Notes_6"/> -->
 
         </TableRow>
 
@@ -96,20 +96,19 @@
 
             <TextView
 
+                android:id="@+id/stab_march"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Stabilité à la marche /10"
+                android:gravity="start"
+                android:text="@string/marchstab"
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
 
             <Spinner
-                android:id="@+id/stab_march"
+                android:id="@+id/stab_march_score"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/Notes_10"/>
-
+                android:layout_height="wrap_content"/>
 
         </TableRow>
 
@@ -118,16 +117,17 @@
 
             <TextView
 
+                android:id="@+id/total"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Total /32"
+                android:gravity="start"
+                android:text="@string/totalminibest"
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
             <TextView
 
-                android:id="@+id/total"
+                android:id="@+id/total_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
                 <!-- android:inputType="numberDecimal"
@@ -140,10 +140,11 @@
 
         <TextView
 
+            android:id="@+id/mentalTestGreco"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Mini-Mental State version Greco "
+            android:text="@string/testgreco"
             android:textColor="#000000"
             android:textStyle="bold" />
 
@@ -152,16 +153,17 @@
 
             <TextView
 
+                android:id="@+id/sc_global"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Score Global "
+                android:gravity="start"
+                android:text="@string/grecoscore"
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
             <EditText
 
-                android:id="@+id/sc_global"
+                android:id="@+id/sc_global_score"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="Score Global"
@@ -175,8 +177,8 @@
 
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Liste de mots utilisés: "
+                android:gravity="start"
+                android:text="@string/listemots"
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
@@ -191,10 +193,11 @@
 
             <TextView
 
+                android:id="@+id/ra_imm"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Score Rappel Immediat "
+                android:gravity="start"
+                android:text="@string/rappelimmediat"
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
@@ -212,10 +215,11 @@
 
             <TextView
 
+                android:id="@+id/ra_diff"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Score Rappel Différé 1-3"
+                android:gravity="start"
+                android:text="@string/rappeldiffere"
                 android:textColor="#000000"
                 android:textStyle="italic" />
 
@@ -237,7 +241,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Mini GDS"
+            android:text="@string/minigds"
             android:textColor="#000000"
             android:textStyle="bold" />
 
@@ -246,21 +250,18 @@
         <!--  <TableRow> -->
         <TextView
 
+            android:id="@+id/GDSQuestion1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Vous sentez-vous découragé et triste ?"
+            android:gravity="start"
+            android:text="@string/question1"
             android:textColor="#000000"
             android:textStyle="italic" />
 
         <!-- Answer 1 -->
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <RadioGroup
 
-            <RadioGroup
-
-                android:id="@+id/GDS1"
+                android:id="@+id/GDSReponse1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkedButton="@+id/no1"
@@ -271,16 +272,15 @@
                     android:id="@+id/yes1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Oui" />
+                    android:text="@string/oui" />
 
                 <RadioButton
 
                     android:id="@+id/no1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Non" />
-            </RadioGroup>
-        </TableRow>
+                    android:text="@string/non" />
+        </RadioGroup>
 
         <!-- </TableRow> -->
 
@@ -290,10 +290,11 @@
 
         <TextView
 
+            android:id="@+id/GDSQuestion2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Etes-vous heureux la plupart du temps ?"
+            android:gravity="start"
+            android:text="@string/question2"
             android:textColor="#000000"
             android:textStyle="italic" />
 
@@ -301,7 +302,7 @@
 
         <RadioGroup
 
-            android:id="@+id/GDS2"
+            android:id="@+id/GDSReponse2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkedButton="@+id/no2"
@@ -312,14 +313,14 @@
                 android:id="@+id/yes2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Oui" />
+                android:text="@string/oui" />
 
             <RadioButton
 
                 android:id="@+id/no2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Non" />
+                android:text="@string/non" />
 
         </RadioGroup>
 
@@ -332,10 +333,11 @@
 
         <TextView
 
+            android:id="@+id/GDSQuestion3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Avez vous le sentiment que votre vie est vide ?"
+            android:gravity="start"
+            android:text="@string/question3"
             android:textColor="#000000"
             android:textStyle="italic" />
 
@@ -343,7 +345,7 @@
 
         <RadioGroup
 
-            android:id="@+id/GDS3"
+            android:id="@+id/GDSReponse3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkedButton="@+id/no3"
@@ -354,14 +356,14 @@
                 android:id="@+id/yes3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Oui" />
+                android:text="@string/oui" />
 
             <RadioButton
 
                 android:id="@+id/no3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Non" />
+                android:text="@string/non" />
 
         </RadioGroup>
 
@@ -374,10 +376,11 @@
 
         <TextView
 
+            android:id="@+id/GDSQuestion4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="Avez-vous l'impression que votre vie est désespérée ?"
+            android:gravity="start"
+            android:text="@string/question4"
             android:textColor="#000000"
             android:textStyle="italic" />
 
@@ -385,7 +388,7 @@
 
         <RadioGroup
 
-            android:id="@+id/GDS4"
+            android:id="@+id/GDSReponse4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkedButton="@+id/no4"
@@ -396,14 +399,14 @@
                 android:id="@+id/yes4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Oui" />
+                android:text="@string/oui" />
 
             <RadioButton
 
                 android:id="@+id/no4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Non" />
+                android:text="@string/non" />
 
         </RadioGroup>
 
