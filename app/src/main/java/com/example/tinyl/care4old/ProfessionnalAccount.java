@@ -6,24 +6,52 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class ProfessionnalAccount extends AppCompatActivity {
 
+    String nom = null;
+    String prenom = null;
+    String metier = null;
+    String adresse = null;
+
+    Button ok = null;
+
+    EditText name = null;
+    EditText firstname = null;
+    EditText profession = null;
+    EditText adress = null;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professionnal_account);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+        ok = (Button)findViewById(R.id.valider);
+        name = (EditText)findViewById(R.id.name);
+        firstname = (EditText)findViewById(R.id.fname);
+        profession = (EditText)findViewById(R.id.profession);
+        adress = (EditText)findViewById(R.id.adrC);
+
+
+        ok.setOnClickListener(okListener);
+
     }
+
+    private View.OnClickListener okListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+
+            nom = name.getText().toString();
+            prenom = firstname.getText().toString();
+            metier = profession.getText().toString();
+            adresse = adress.getText().toString();
+
+        }
+    };
+
 
 }

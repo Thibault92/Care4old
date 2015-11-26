@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -23,6 +25,8 @@ public class PsychologicalTest extends AppCompatActivity {
     private Map<Integer, Integer> spinnerValue = new HashMap<>();
 
     private TextView total = null;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

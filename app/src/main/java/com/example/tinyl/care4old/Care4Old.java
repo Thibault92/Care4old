@@ -14,22 +14,101 @@ import android.widget.EditText;
 
 public class Care4Old extends AppCompatActivity {
 
+
+    String password = null;
+    String login = null;
+
+    Button inscription = null;
+    Button mdp_oublie = null;
+    Button connexion = null;
+
+    EditText mdp = null;
+    EditText identifiant = null;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_care4_old);
+
+
+        inscription = (Button)findViewById(R.id.inscription);
+        mdp_oublie = (Button)findViewById(R.id.mdp_oublie);
+        connexion = (Button)findViewById(R.id.connexion);
+        mdp = (EditText)findViewById(R.id.mdp);
+        identifiant = (EditText)findViewById(R.id.identifiant);
+
+        inscription.setOnClickListener(inscriptionListener);
+        mdp_oublie.setOnClickListener(mdp_oublieListener);
+        connexion.setOnClickListener(connexionListener);
+
+    }
+
+
+    private View.OnClickListener connexionListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+
+            password = mdp.getText().toString();
+            login = identifiant.getText().toString();
+
+
+        }
+    };
+
+    private View.OnClickListener mdp_oublieListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            password = null;
+            login = null;
+
+        }
+    };
+
+    private View.OnClickListener inscriptionListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            password = null;
+            login = null;
+
+        }
+    };
+
+    public void sendPsycho(View view)
+    {
+        Intent intent = new Intent(Care4Old.this, PsychologicalTest.class);
+        startActivity(intent);
+    }
+    // });
+
+
+    public void sendHospitalisation(View view)
+    {
+        Intent intent = new Intent(Care4Old.this, Hospitalisation.class);
+        startActivity(intent);
+    }
+
+    public void sendKine(View view)
+    {
+        Intent intent = new Intent(Care4Old.this, KinesitherapeuticalReport.class);
+        startActivity(intent);
+    }
+
+    public void sendPAccount(View view)
+    {
+        Intent intent = new Intent(Care4Old.this, ProfessionnalAccount.class);
+        startActivity(intent);
+    }
+
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_care4_old);
-       /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        }); */
     }
 
     @Override
@@ -75,6 +154,6 @@ public class Care4Old extends AppCompatActivity {
     {
         Intent intent = new Intent(Care4Old.this, KinesitherapeuticalReport.class);
         startActivity(intent);
-    }
+    }*/
 
 }
