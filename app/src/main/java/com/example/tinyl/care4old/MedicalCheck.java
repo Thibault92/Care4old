@@ -47,7 +47,7 @@ public class MedicalCheck extends AppCompatActivity {
         startPickDate = (Button) findViewById(R.id.pickTestDate);
 
                 /* get the current date */
-        startDate = Calendar.getInstance();
+       startDate = Calendar.getInstance();
 
                 /* add a click listener to the button   */
         startPickDate.setOnClickListener(new View.OnClickListener() {

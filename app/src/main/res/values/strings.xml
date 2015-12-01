@@ -127,5 +127,7 @@
         <item>mot1</item>
     </string-array>
     <string name="title_activity_medical_check">MedicalCheck</string>
+    <string name="noGIR">Pas de GIR</string>
+    <string name="gir1">GIR - 1</string>
 
 </resources>

@@ -114,6 +114,145 @@
             />
 
     </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/albumin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Albumin (mg): "
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="center"/>
 
+            <EditText
+                android:id="@+id/sc_albumin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Albumin"
+                android:inputType="numberDecimal" />
+
+        </TableRow>
+    <TableRow>
+        <TextView
+            android:id="@+id/crp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Crp (mg) : "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/sc_crp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="CRP"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/vitd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Vitamine D (mg) : "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/sc_vitd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Vitamine D"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/freq"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Batt par min : "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/sc_freq"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="BPM"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/pressure"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Pression : "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/sc_pressure"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pression"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+
+
+
+    <TableRow>
+        <RadioGroup
+        android:id="@+id/GIR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkedButton="@+id/no"
+        android:orientation="horizontal">
+
+        <RadioButton
+
+            android:id="@+id/no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/noGIR" />
+
+        <RadioButton
+
+            android:id="@+id/gir1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gir1" />
+
+        <RadioButton
+
+            android:id="@+id/gir2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GIR - 2" />
+        </RadioGroup>
+    </TableRow>
+    <TableRow>
+        <RadioButton
+
+            android:id="@+id/gir3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GIR - 3" />
+        <RadioButton
+
+            android:id="@+id/gir4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GIR - 4" />
+    </TableRow>
     </TableLayout>
 </ScrollView>
