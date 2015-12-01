@@ -156,6 +156,24 @@
 
         </TableRow>
 
+        <TableRow>
+            <TextView
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Link to MedicalCheck" />
+
+            <Button
+
+                android:id="@+id/medCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sendMCheck"
+                android:text="Professionnal Account" />
+
+        </TableRow>
+
 
     </TableLayout>
 </ScrollView>

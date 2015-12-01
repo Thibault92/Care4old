@@ -126,5 +126,6 @@
     <string-array name="Word_List">
         <item>mot1</item>
     </string-array>
+    <string name="title_activity_medical_check">MedicalCheck</string>
 
 </resources>

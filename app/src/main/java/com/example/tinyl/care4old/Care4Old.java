@@ -102,6 +102,12 @@ public class Care4Old extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void sendMCheck(View view)
+    {
+        Intent intent = new Intent(Care4Old.this, MedicalCheck.class);
+        startActivity(intent);
+    }
+
     /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
