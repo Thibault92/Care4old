@@ -48,7 +48,72 @@
 
     </TableRow>
 
-        
+    <TableRow>
+        <TextView
+            android:id="@+id/height"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Taille : "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/sc_height"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Taille"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Poids : "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/sc_weight"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Poids"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/bmi"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="IMC : "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/sc_bmi"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="IMC : "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+        <Button
+
+            android:id="@+id/calcul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculer l'IMC"
+            />
+
+    </TableRow>
 
     </TableLayout>
 </ScrollView>

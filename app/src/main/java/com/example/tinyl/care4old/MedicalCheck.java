@@ -7,9 +7,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +31,12 @@ public class MedicalCheck extends AppCompatActivity {
 
     private TextView activeDateDisplay;
     private Calendar activeDate;
+
+    Button envoyer = null;
+    EditText poids = null;
+    EditText taille = null;
+
+    TextView result = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +62,16 @@ public class MedicalCheck extends AppCompatActivity {
 
         /* display the current date (this method is below)  */
         updateDisplay(startDateDisplay, startDate);
+
+        envoyer = (Button)findViewById(R.id.calcul);
+        taille = (EditText)findViewById(R.id.sc_height);
+        poids = (EditText)findViewById(R.id.sc_weight);
+        result = (TextView)findViewById(R.id.sc_bmi);
+
+        envoyer.setOnClickListener(envoyerListener);
+        taille.addTextChangedListener(textWatcher);
+        poids.addTextChangedListener(textWatcher);
+
     }
 
     private void updateDisplay(TextView dateDisplay, Calendar date) {
@@ -103,4 +124,41 @@ private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialo
                 break;
         }
     }
+
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            //result.setText(defaut);
+        }
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
+    };
+
+    // Uniquement pour le bouton "envoyer"
+
+    private View.OnClickListener envoyerListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+                // On récupère la taille
+                String t = taille.getText().toString();
+
+                // On récupère le poids
+                String p = poids.getText().toString();
+                float tValue = Float.valueOf(t);
+
+                // Puis on vérifie que la taille est cohérente
+                    float pValue = Float.valueOf(p);
+
+                        tValue = tValue / 100;
+
+                    tValue = (float)Math.pow(tValue, 2);
+                    float imc = pValue / tValue;
+                    result.setText(String.valueOf(imc));
+                }
+        };
 }
