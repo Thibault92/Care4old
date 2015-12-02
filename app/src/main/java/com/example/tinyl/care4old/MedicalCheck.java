@@ -22,46 +22,27 @@ import java.util.Calendar;
 
 public class MedicalCheck extends AppCompatActivity {
 
-    private TextView startDateDisplay;
-    private Button startPickDate;
-    private Calendar startDate;
-    private Calendar endDate;
-
-    static final int DATE_DIALOG_ID = 0;
-
-    private TextView activeDateDisplay;
-    private Calendar activeDate;
-
     Button envoyer = null;
     EditText poids = null;
     EditText taille = null;
 
     TextView result = null;
 
+
+    private TextView mDateDisplay;
+    private Button mPickDate;
+    private int mYear;
+    private int mMonth;
+    private int mDay;
+
+    static final int START_DATE_DIALOG_ID = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_check);
 
-        startDateDisplay = (TextView) findViewById(R.id.displayTestDate);
-        startPickDate = (Button) findViewById(R.id.pickTestDate);
-
-                /* get the current date */
-       startDate = Calendar.getInstance();
-
-                /* add a click listener to the button   */
-        startPickDate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showDateDialog(startDateDisplay, startDate);
-            }
-        });
-
-                /* get the current date */
-        endDate = Calendar.getInstance();
-
-
-        /* display the current date (this method is below)  */
-        updateDisplay(startDateDisplay, startDate);
 
         envoyer = (Button)findViewById(R.id.calcul);
         taille = (EditText)findViewById(R.id.sc_height);
@@ -72,58 +53,73 @@ public class MedicalCheck extends AppCompatActivity {
         taille.addTextChangedListener(textWatcher);
         poids.addTextChangedListener(textWatcher);
 
+
+        mDateDisplay = (TextView) findViewById(R.id.displayTestDate);
+        mPickDate = (Button) findViewById(R.id.pickTestDate);
+
+        mPickDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDialog(START_DATE_DIALOG_ID);
+            }
+        });
+
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        updateStartDisplay();
+
     }
 
-    private void updateDisplay(TextView dateDisplay, Calendar date) {
-        dateDisplay.setText(
+    private void updateStartDisplay() {
+        mDateDisplay.setText(
                 new StringBuilder()
                         // Month is 0 based so add 1
-                        .append(date.get(Calendar.MONTH) + 1).append("-")
-                        .append(date.get(Calendar.DAY_OF_MONTH)).append("-")
-                        .append(date.get(Calendar.YEAR)).append(" "));
+                        .append(mMonth + 1).append("-")
+                        .append(mDay).append("-")
+                        .append(mYear).append(" "));
+
 
     }
 
-    public void showDateDialog(TextView dateDisplay, Calendar date) {
-        activeDateDisplay = dateDisplay;
-        activeDate = date;
-        showDialog(DATE_DIALOG_ID);
-    }
+    private DatePickerDialog.OnDateSetListener mDateSetListener =
+            new DatePickerDialog.OnDateSetListener() {
 
-private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
-    @Override
-    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        activeDate.set(Calendar.YEAR, year);
-        activeDate.set(Calendar.MONTH, monthOfYear);
-        activeDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        updateDisplay(activeDateDisplay, activeDate);
-        unregisterDateDisplay();
-    }
-};
-
-    private void unregisterDateDisplay() {
-        activeDateDisplay = null;
-        activeDate = null;
-    }
+                public void onDateSet(DatePicker view, int year,
+                                      int monthOfYear, int dayOfMonth) {
+                    mYear = year;
+                    mMonth = monthOfYear;
+                    mDay = dayOfMonth;
+                    updateStartDisplay();
+                }
+            };
 
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
-            case DATE_DIALOG_ID:
-                return new DatePickerDialog(this, dateSetListener, activeDate.get(Calendar.YEAR), activeDate.get(Calendar.MONTH), activeDate.get(Calendar.DAY_OF_MONTH));
+            case START_DATE_DIALOG_ID:
+                return new DatePickerDialog(this,
+                        mDateSetListener,
+                        mYear, mMonth, mDay);
         }
         return null;
     }
 
-    @Override
-    protected void onPrepareDialog(int id, Dialog dialog) {
-        super.onPrepareDialog(id, dialog);
-        switch (id) {
-            case DATE_DIALOG_ID:
-                ((DatePickerDialog) dialog).updateDate(activeDate.get(Calendar.YEAR), activeDate.get(Calendar.MONTH), activeDate.get(Calendar.DAY_OF_MONTH));
-                break;
-        }
-    }
+    private DatePickerDialog.OnDateSetListener endDateSetListener =
+            new DatePickerDialog.OnDateSetListener() {
+
+                public void onDateSet(DatePicker view, int year,
+                                      int monthOfYear, int dayOfMonth) {
+                    mYear = year;
+                    mMonth = monthOfYear;
+                    mDay = dayOfMonth;
+                    updateStartDisplay();
+                }
+            };
+
+
+
 
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -138,20 +134,16 @@ private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialo
         }
     };
 
-    // Uniquement pour le bouton "envoyer"
 
     private View.OnClickListener envoyerListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
-                // On récupère la taille
                 String t = taille.getText().toString();
 
-                // On récupère le poids
                 String p = poids.getText().toString();
                 float tValue = Float.valueOf(t);
 
-                // Puis on vérifie que la taille est cohérente
                     float pValue = Float.valueOf(p);
 
                         tValue = tValue / 100;

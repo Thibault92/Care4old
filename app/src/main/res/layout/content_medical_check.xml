@@ -208,15 +208,13 @@
 
     </TableRow>
 
-
-
-    <TableRow>
+<TableRow>
         <RadioGroup
         android:id="@+id/GIR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkedButton="@+id/no"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <RadioButton
 
@@ -238,9 +236,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GIR - 2" />
-        </RadioGroup>
-    </TableRow>
-    <TableRow>
+
         <RadioButton
 
             android:id="@+id/gir3"
@@ -253,6 +249,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GIR - 4" />
-    </TableRow>
+
+        </RadioGroup>
+</TableRow>
     </TableLayout>
 </ScrollView>
