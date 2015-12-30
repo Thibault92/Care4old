@@ -76,12 +76,10 @@ public class Care4Old extends AppCompatActivity {
         }
     };
 
-    public void sendPsycho(View view)
-    {
+    public void sendPsycho(View view) {
         Intent intent = new Intent(Care4Old.this, PsychologicalTest.class);
         startActivity(intent);
     }
-    // });
 
 
     public void sendHospitalisation(View view)
@@ -96,70 +94,16 @@ public class Care4Old extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void sendPAccount(View view)
+    /*public void sendPAccount(View view)
     {
         Intent intent = new Intent(Care4Old.this, ProfessionnalAccount.class);
         startActivity(intent);
-    }
+    }*/
 
     public void sendMCheck(View view)
     {
         Intent intent = new Intent(Care4Old.this, MedicalCheck.class);
         startActivity(intent);
     }
-
-    /*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_care4_old);
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_care4_old, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-   // final Button click = (Button)findViewById(R.id.psycho_test);
-    //click.setOnClickListener(new View.OnClickListener() {
-        public void sendPsycho(View view)
-        {
-            Intent intent = new Intent(Care4Old.this, PsychologicalTest.class);
-            startActivity(intent);
-        }
-   // });
-
-
-    public void sendHospitalisation(View view)
-    {
-        Intent intent = new Intent(Care4Old.this, Hospitalisation.class);
-        startActivity(intent);
-    }
-
-    public void sendKine(View view)
-    {
-        Intent intent = new Intent(Care4Old.this, KinesitherapeuticalReport.class);
-        startActivity(intent);
-    }*/
 
 }
