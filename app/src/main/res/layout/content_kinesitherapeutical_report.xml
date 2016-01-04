@@ -16,6 +16,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+    <TableRow>
+
+        <TextView
+
+            android:id="@+id/testDate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Date de test : "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+        <TextView
+
+            android:id="@+id/displayTestDate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"/>
+    </TableRow>
 
     <TextView
 

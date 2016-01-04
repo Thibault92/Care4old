@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,12 +20,25 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
 
     private TextView total = null;
 
+    private TextView mDateDisplay;
+    private int mYear;
+    private int mMonth;
+    private int mDay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kinesitherapeutical_report);
 
         total = (TextView) findViewById(R.id.totaltinetti_score);
+
+        mDateDisplay = (TextView) findViewById(R.id.displayTestDate);
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        updateStartDisplay();
 
         String[] equilibreNotes = getResources().getStringArray(R.array.Notes_16);
         String[] equilibreDynamiqueNotes = getResources().getStringArray(R.array.Notes_12);
@@ -41,6 +55,17 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
 
         setListenerToSpinners();
         resultCalculate();
+
+    }
+
+    private void updateStartDisplay() {
+        mDateDisplay.setText(
+                new StringBuilder()
+                        // Month is 0 based so add 1
+                        .append(mDay).append("-")
+                        .append(mMonth + 1).append("-")
+                        .append(mYear).append(" "));
+
 
     }
 
