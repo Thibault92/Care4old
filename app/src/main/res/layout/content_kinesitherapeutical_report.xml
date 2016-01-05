@@ -136,7 +136,7 @@
             android:id="@+id/temps_value"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Temps"
+            android:hint="Mesure"
             android:inputType="numberDecimal" />
 
     </TableRow>
@@ -170,7 +170,7 @@
             android:id="@+id/lente_value"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Lente"
+            android:hint="Mesure"
             android:inputType="numberDecimal" />
 
     </TableRow>
@@ -192,7 +192,7 @@
             android:id="@+id/rapide_value"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Rapide"
+            android:hint="Mesure"
             android:inputType="numberDecimal" />
 
     </TableRow>

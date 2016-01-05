@@ -38,10 +38,10 @@
     <string name="equilibresynamique">Equilibre Dynamique(marche)</string>
     <string name="totaltinettipoma">Total Tinetti Poma</string>
     <string name="getupandgo">Get Up and Go</string>
-    <string name="temps">Temps</string>
+    <string name="temps">Temps (sec)</string>
     <string name="vitessemarche">Vitesse Marche (sur 4m)</string>
-    <string name="lent">Lente (secondes)</string>
-    <string name="rapide">Rapide (secondes)</string>
+    <string name="lent">Lente (sec)</string>
+    <string name="rapide">Rapide (sec)</string>
 
     <!-- Array of values for the different spinners -->
    <!--  <string name="Notes"> Note à attribuer</string> -->
