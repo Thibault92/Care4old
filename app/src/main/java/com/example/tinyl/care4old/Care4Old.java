@@ -298,33 +298,9 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
         }
     }
 
-    public void sendPsycho(View view) {
-        Intent intent = new Intent(Care4Old.this, PsychologicalTest.class);
-        startActivity(intent);
-    }
-
-
-    public void sendHospitalisation(View view)
+    public void sendPatient(View view)
     {
-        Intent intent = new Intent(Care4Old.this, Hospitalisation.class);
-        startActivity(intent);
-    }
-
-    public void sendKine(View view)
-    {
-        Intent intent = new Intent(Care4Old.this, KinesitherapeuticalReport.class);
-        startActivity(intent);
-    }
-
-    /*public void sendPAccount(View view)
-    {
-        Intent intent = new Intent(Care4Old.this, ProfessionnalAccount.class);
-        startActivity(intent);
-    }*/
-
-    public void sendMCheck(View view)
-    {
-        Intent intent = new Intent(Care4Old.this, MedicalCheck.class);
+        Intent intent = new Intent(Care4Old.this, PatientPage.class);
         startActivity(intent);
     }
 

@@ -26,94 +26,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:text="Link to Hospitalisation" />
+                android:text="Link to Patient detail" />
 
             <Button
 
-                android:id="@+id/hospitalisation"
+                android:id="@+id/patient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="sendHospitalisation"
-                android:text="Hospitalisation"
+                android:onClick="sendPatient"
+                android:text="Patient"
                 android:layout_weight="1"/>
 
         </TableRow>
-
-        <TableRow>
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="Link to Psycho Test" />
-
-            <Button
-
-                android:id="@+id/psycho_test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="sendPsycho"
-                android:text="Psycho Test"
-                android:layout_weight="1"/>
-
-        </TableRow>
-
-        <TableRow>
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="Link to Kine Test" />
-
-            <Button
-
-                android:id="@+id/kine_report"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="sendKine"
-                android:text="Kine Test"
-                android:layout_weight="1"/>
-
-        </TableRow>
-
-     <!--   <TableRow>
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="Link to PAccount" />
-
-            <Button
-
-                android:id="@+id/proAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="sendPAccount"
-                android:text="Professionnal Account" />
-
-        </TableRow> -->
-
-        <TableRow>
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="Link to MedicalCheck" />
-
-            <Button
-
-                android:id="@+id/medCheck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="sendMCheck"
-                android:text="Medical Check"
-                android:layout_weight="1"/>
-
-        </TableRow>
-
 
     </TableLayout>
 </ScrollView>

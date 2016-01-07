@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_patient_page"
+    tools:context="com.example.tinyl.care4old.PatientPage">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableRow>
+
+            <TextView
+
+                android:id="@+id/welcomeText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Bienvenue,"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="center"/>
+
+            <TextView
+
+                android:id="@+id/idUser"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="xxxxxx"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="end"/>
+        </TableRow>
+        <TextView
+
+            android:id="@+id/idPatient"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Nom, Prenom"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="start"/>
+
+        <TableRow>
+
+            <Button
+
+                android:id="@+id/mediCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sendMCheck"
+                android:text="M C"
+                android:layout_weight="1"/>
+
+            <Button
+
+                android:id="@+id/hospitalisation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sendHospitalisation"
+                android:text="H"
+                android:layout_weight="1"/>
+
+            <Button
+
+                android:id="@+id/psyTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sendPsycho"
+                android:text="P T"
+                android:layout_weight="1"/>
+
+
+
+            <Button
+
+                android:id="@+id/kineTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sendKine"
+                android:text="K T"
+                android:layout_weight="1"/>
+
+        </TableRow>
+
+
+
+    </TableLayout>
+</ScrollView>

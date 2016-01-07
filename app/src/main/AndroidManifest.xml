@@ -66,6 +66,11 @@
             android:label="@string/title_activity_medical_check"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".PatientPage"
+            android:label="@string/title_activity_patient_page"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
