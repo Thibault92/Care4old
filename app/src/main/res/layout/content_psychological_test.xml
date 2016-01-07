@@ -168,6 +168,29 @@
             android:textColor="#000000"
             android:textStyle="bold" />
 
+        <TableRow>
+
+            <TextView
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/listemots"
+                android:textColor="#000000"
+                android:textStyle="italic" />
+
+            <!-- Liste de mots -->
+            <TextView
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="chat - chien - canard"
+                android:textColor="#000000"
+                android:textStyle="italic" />
+
+            <!-- Liste des mots choisis -->
+
+        </TableRow>
 
         <TableRow>
 
@@ -186,28 +209,10 @@
                 android:id="@+id/sc_global_score"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="Score Global"
+                android:hint="Résultat"
                 android:inputType="numberDecimal" />
 
         </TableRow>
-
-        <TableRow>
-
-            <TextView
-
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="@string/listemots"
-                android:textColor="#000000"
-                android:textStyle="italic" />
-
-            <!-- Liste de mots -->
-
-            <!-- Liste des mots choisis -->
-
-        </TableRow>
-
 
         <TableRow>
 
@@ -226,7 +231,7 @@
                 android:id="@+id/sc_ra_imm"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="Score Rappel Immediat"
+                android:hint="Résultat"
                 android:inputType="numberDecimal" />
 
         </TableRow>
@@ -248,7 +253,7 @@
                 android:id="@+id/sc_ra_diff"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="Score Rappel Différé"
+                android:hint="Résultat"
                 android:inputType="numberDecimal" />
 
         </TableRow>
