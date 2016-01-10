@@ -5,9 +5,12 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -31,6 +34,8 @@ public class Hospitalisation extends AppCompatActivity {
     private int mDay2;
 
     private Button resetData;
+
+    EditText commentary = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,6 +79,9 @@ public class Hospitalisation extends AppCompatActivity {
 
         updateStartDisplay();
         updateEndDisplay();
+
+        commentary = (EditText) findViewById(R.id.raison);
+        commentary.addTextChangedListener(textWatcher);
     }
 
     private void updateStartDisplay() {
@@ -136,6 +144,18 @@ public class Hospitalisation extends AppCompatActivity {
         }
         return null;
     }
+
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
+    };
 
     public void sendPatient(View view)
     {

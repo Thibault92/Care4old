@@ -84,8 +84,7 @@
             android:id="@+id/raison"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Raison"
-            android:inputType="numberDecimal"/>
+            android:hint="Raison"/>
     </TableRow>
 
     <TableRow>

@@ -34,6 +34,14 @@ public class MedicalCheck extends AppCompatActivity {
 
     private Button resetData;
 
+    EditText pressureScore = null;
+    EditText frequency = null;
+    EditText vitD = null;
+    EditText CRP = null;
+    EditText albumine = null;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +81,18 @@ public class MedicalCheck extends AppCompatActivity {
         mDay = c.get(Calendar.DAY_OF_MONTH);
 
         updateStartDisplay();
+
+        pressureScore = (EditText) findViewById(R.id.sc_pressure);
+        frequency = (EditText) findViewById(R.id.sc_freq);
+        vitD = (EditText) findViewById(R.id.sc_vitd);
+        CRP = (EditText) findViewById(R.id.sc_crp);
+        albumine = (EditText) findViewById(R.id.sc_albumin);
+
+        pressureScore.addTextChangedListener(textWatcher);
+        frequency.addTextChangedListener(textWatcher);
+        vitD.addTextChangedListener(textWatcher);
+        CRP.addTextChangedListener(textWatcher);
+        albumine.addTextChangedListener(textWatcher);
     }
 
     private void updateStartDisplay() {
@@ -127,7 +147,6 @@ public class MedicalCheck extends AppCompatActivity {
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            //result.setText(defaut);
         }
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {

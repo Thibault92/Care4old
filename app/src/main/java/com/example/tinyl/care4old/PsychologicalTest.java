@@ -3,10 +3,13 @@ package com.example.tinyl.care4old;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -32,7 +35,9 @@ public class PsychologicalTest extends AppCompatActivity {
 
     private Button resetData;
 
-
+    EditText grecoGlobal;
+    EditText grecoImmediat;
+    EditText grecoDiff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,7 @@ public class PsychologicalTest extends AppCompatActivity {
     private void chargeView(){
         total = (TextView) findViewById(R.id.total_score);
 
+// Display date of the test
         mDateDisplay = (TextView) findViewById(R.id.displayTestDate);
 
         final Calendar c = Calendar.getInstance();
@@ -58,6 +64,7 @@ public class PsychologicalTest extends AppCompatActivity {
 
         updateStartDisplay();
 
+// Save spinner values and calculate it automatically
         String[] orientationSensorielleNotes = getResources().getStringArray(R.array.Notes_6);
         String[] posturalNotes = getResources().getStringArray(R.array.Notes_8);
         String[] marchStabilityNotes = getResources().getStringArray(R.array.Notes_10);
@@ -77,6 +84,15 @@ public class PsychologicalTest extends AppCompatActivity {
 
         setListenerToSpinners();
         resultCalculate();
+
+        grecoGlobal = (EditText) findViewById(R.id.sc_global_score);
+        grecoImmediat = (EditText) findViewById(R.id.sc_ra_imm);
+        grecoDiff = (EditText) findViewById(R.id.sc_ra_diff);
+
+        grecoGlobal.addTextChangedListener(textWatcher);
+        grecoImmediat.addTextChangedListener(textWatcher);
+        grecoDiff.addTextChangedListener(textWatcher);
+
     }
 
     private void updateStartDisplay() {
@@ -133,6 +149,18 @@ public class PsychologicalTest extends AppCompatActivity {
         mySpinners[3] = (Spinner) findViewById(R.id.stab_march_score);
 
     }
+
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
+    };
 
     public void sendPatient(View view)
     {

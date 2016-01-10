@@ -281,7 +281,8 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
             if (success) {
                 Intent intent = new Intent(Care4Old.this, PatientPage.class);
                 startActivity(intent);
-                //finish();
+                finish();
+
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -296,13 +297,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
     }
 
     boolean doHttpRequest() {
-        return true;
-    }
-
-    public void sendPatient(View view)
-    {
-            Intent intent = new Intent(Care4Old.this, PatientPage.class);
-            startActivity(intent);
+        return false;
     }
 
 }

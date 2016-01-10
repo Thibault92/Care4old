@@ -3,10 +3,13 @@ package com.example.tinyl.care4old;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -28,6 +31,10 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
     private int mDay;
 
     private Button resetData;
+
+    EditText getUp = null;
+    EditText slowWalk = null;
+    EditText fastWalk = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +74,15 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
 
         setListenerToSpinners();
         resultCalculate();
+
+
+        slowWalk = (EditText) findViewById(R.id.lente_value);
+        fastWalk = (EditText) findViewById(R.id.rapide_value);
+        getUp = (EditText) findViewById(R.id.temps_value);
+
+        slowWalk.addTextChangedListener(textWatcher);
+        fastWalk.addTextChangedListener(textWatcher);
+        getUp.addTextChangedListener(textWatcher);
     }
 
     private void updateStartDisplay() {
@@ -121,6 +137,18 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
         mySpinners[1] = (Spinner) findViewById(R.id.equilibre_dynamique_score);
 
     }
+
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
+    };
 
     public void sendPatient(View view)
     {

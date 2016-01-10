@@ -20,24 +20,6 @@
         tools:showIn="@layout/activity_care4_old"
         tools:context=".Care4Old">
 
-        <TableRow>
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="Link to Patient detail" />
-
-            <Button
-
-                android:id="@+id/patient"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="sendPatient"
-                android:text="Patient"
-                android:layout_weight="1"/>
-
-        </TableRow>
 
     </TableLayout>
 </ScrollView>
