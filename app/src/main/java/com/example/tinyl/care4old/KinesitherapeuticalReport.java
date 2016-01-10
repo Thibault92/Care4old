@@ -1,10 +1,12 @@
 package com.example.tinyl.care4old;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,11 +27,21 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
     private int mMonth;
     private int mDay;
 
+    private Button resetData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kinesitherapeutical_report);
 
+        chargeViewKine();
+
+        resetData = (Button) findViewById(R.id.reset);
+        resetData.setOnClickListener(reset);
+
+    }
+
+    private void chargeViewKine(){
         total = (TextView) findViewById(R.id.totaltinetti_score);
 
         mDateDisplay = (TextView) findViewById(R.id.displayTestDate);
@@ -55,7 +67,6 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
 
         setListenerToSpinners();
         resultCalculate();
-
     }
 
     private void updateStartDisplay() {
@@ -110,5 +121,21 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
         mySpinners[1] = (Spinner) findViewById(R.id.equilibre_dynamique_score);
 
     }
+
+    public void sendPatient(View view)
+    {
+        Intent intent = new Intent(KinesitherapeuticalReport.this, PatientPage.class);
+        startActivity(intent);
+    }
+
+    private View.OnClickListener reset = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            setContentView(R.layout.activity_kinesitherapeutical_report);
+            chargeViewKine();
+
+        }
+    };
 
 }

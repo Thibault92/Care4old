@@ -2,21 +2,16 @@ package com.example.tinyl.care4old;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -37,13 +32,22 @@ public class MedicalCheck extends AppCompatActivity {
 
     static final int START_DATE_DIALOG_ID = 0;
 
+    private Button resetData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_check);
 
+        chargeViewMedCheck();
 
+        resetData = (Button) findViewById(R.id.reset);
+        resetData.setOnClickListener(reset);
+
+    }
+
+    private void chargeViewMedCheck(){
         envoyer = (Button)findViewById(R.id.calcul);
         taille = (EditText)findViewById(R.id.sc_height);
         poids = (EditText)findViewById(R.id.sc_weight);
@@ -69,7 +73,6 @@ public class MedicalCheck extends AppCompatActivity {
         mDay = c.get(Calendar.DAY_OF_MONTH);
 
         updateStartDisplay();
-
     }
 
     private void updateStartDisplay() {
@@ -151,6 +154,22 @@ public class MedicalCheck extends AppCompatActivity {
                     tValue = (float)Math.pow(tValue, 2);
                     float imc = pValue / tValue;
                     result.setText(String.valueOf(imc));
-                }
-        };
+            }
+    };
+
+    public void sendPatient(View view)
+    {
+        Intent intent = new Intent(MedicalCheck.this, PatientPage.class);
+        startActivity(intent);
+    }
+
+    private View.OnClickListener reset = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            setContentView(R.layout.activity_medical_check);
+            chargeViewMedCheck();
+
+        }
+    };
 }

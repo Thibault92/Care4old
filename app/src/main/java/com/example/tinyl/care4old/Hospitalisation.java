@@ -2,6 +2,7 @@ package com.example.tinyl.care4old;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,11 +30,20 @@ public class Hospitalisation extends AppCompatActivity {
     private int mMonth2;
     private int mDay2;
 
+    private Button resetData;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospitalisation);
 
+        chargeViewHospital();
+
+        resetData = (Button) findViewById(R.id.reset);
+        resetData.setOnClickListener(reset);
+    }
+
+    private void chargeViewHospital() {
         startDateDisplay = (TextView) findViewById(R.id.displayEntryDate);
         startPickDate = (Button) findViewById(R.id.pickEntryDate);
 
@@ -64,7 +74,6 @@ public class Hospitalisation extends AppCompatActivity {
 
         updateStartDisplay();
         updateEndDisplay();
-
     }
 
     private void updateStartDisplay() {
@@ -127,4 +136,20 @@ public class Hospitalisation extends AppCompatActivity {
         }
         return null;
     }
+
+    public void sendPatient(View view)
+    {
+        Intent intent = new Intent(Hospitalisation.this, PatientPage.class);
+        startActivity(intent);
+    }
+
+    private View.OnClickListener reset = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            setContentView(R.layout.activity_hospitalisation);
+            chargeViewHospital();
+
+        }
+    };
 }

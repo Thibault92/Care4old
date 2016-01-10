@@ -88,4 +88,33 @@
             android:inputType="numberDecimal"/>
     </TableRow>
 
+    <TableRow>
+
+        <Button
+
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:layout_weight="1"/>
+
+        <Button
+
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reset"
+            android:layout_weight="1"/>
+
+        <Button
+
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendPatient"
+            android:text="@string/cancel"
+            android:layout_weight="1"/>
+
+    </TableRow>
+
 </TableLayout>
