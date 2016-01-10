@@ -13,15 +13,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -260,7 +255,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
             // TODO: attempt authentication against a network service.
 
             try {
-                // Simulate network access.
+                doHttpRequest();
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
@@ -284,7 +279,9 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
             showProgress(false);
 
             if (success) {
-                finish();
+                Intent intent = new Intent(Care4Old.this, PatientPage.class);
+                startActivity(intent);
+                //finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -298,10 +295,14 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
         }
     }
 
+    boolean doHttpRequest() {
+        return true;
+    }
+
     public void sendPatient(View view)
     {
-        Intent intent = new Intent(Care4Old.this, PatientPage.class);
-        startActivity(intent);
+            Intent intent = new Intent(Care4Old.this, PatientPage.class);
+            startActivity(intent);
     }
 
 }
