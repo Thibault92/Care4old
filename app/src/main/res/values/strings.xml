@@ -144,5 +144,9 @@
         completions."
     </string>
     <string name="title_activity_patient_page">PatientPage</string>
+    <string name="title_activity_patient_page_perso">PatientPagePerso</string>
+    <string name="save">Sauv.</string>
+    <string name="reset">Reset</string>
+    <string name="cancel">Annuler</string>
 
 </resources>

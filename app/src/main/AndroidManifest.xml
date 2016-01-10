@@ -71,6 +71,11 @@
             android:label="@string/title_activity_patient_page"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".PatientPagePerso"
+            android:label="@string/title_activity_patient_page_perso"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
