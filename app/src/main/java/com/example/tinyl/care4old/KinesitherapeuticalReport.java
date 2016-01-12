@@ -154,6 +154,7 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
     {
         Intent intent = new Intent(KinesitherapeuticalReport.this, PatientPage.class);
         startActivity(intent);
+        finish();
     }
 
     private View.OnClickListener reset = new View.OnClickListener() {

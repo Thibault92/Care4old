@@ -180,6 +180,7 @@ public class MedicalCheck extends AppCompatActivity {
     {
         Intent intent = new Intent(MedicalCheck.this, PatientPage.class);
         startActivity(intent);
+        finish();
     }
 
     private View.OnClickListener reset = new View.OnClickListener() {

@@ -150,5 +150,14 @@
     <string name="cancel">Annuler</string>
     <string name="search">Search</string>
     <string name="search_hint">Search my app</string>
+    <string name="testChoice">Choix du test à effectuer:</string>
+    <string name="med_check_button">Visit. Medicale</string>
+    <string name="med_check_text">Visite Médicale</string>
+    <string name="kine_test_button">Seanc. Kiné.</string>
+    <string name="kine_test_text">Seance Kinésithérapeutique</string>
+    <string name="psy_test_button">Seanc. Psy.</string>
+    <string name="psy_test_text">Seance Psychologique</string>
+    <string name="hospitalisation_button">Hospitalisation</string>
+    <string name="hospitalisation_text">Hospitalisation</string>
 
 </resources>

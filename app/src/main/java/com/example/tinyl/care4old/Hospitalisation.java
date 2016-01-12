@@ -161,6 +161,7 @@ public class Hospitalisation extends AppCompatActivity {
     {
         Intent intent = new Intent(Hospitalisation.this, PatientPage.class);
         startActivity(intent);
+        finish();
     }
 
     private View.OnClickListener reset = new View.OnClickListener() {

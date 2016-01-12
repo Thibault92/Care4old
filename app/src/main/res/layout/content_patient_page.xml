@@ -44,54 +44,103 @@
             android:id="@+id/idPatient"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Nom, Prenom"
+            android:text="Nom Patient, Prenom Patient"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="start"/>
+
+        <TextView
+            android:id="@+id/testChoice"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/testChoice"
             android:textStyle="bold"
             android:textColor="#000000"
             android:gravity="start"/>
 
         <TableRow>
-
             <Button
 
                 android:id="@+id/mediCheck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="sendMCheck"
-                android:text="M C"
+                android:onClick="openMCheck"
+                android:text="@string/med_check_button"
                 android:layout_weight="1"/>
 
-            <Button
-
-                android:id="@+id/hospitalisation"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/mediCheckText"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:onClick="sendHospitalisation"
-                android:text="H"
-                android:layout_weight="1"/>
+                android:text="@string/med_check_text"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
 
-            <Button
+        </TableRow>
 
-                android:id="@+id/psyTest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="sendPsycho"
-                android:text="P T"
-                android:layout_weight="1"/>
-
-
-
+        <TableRow>
             <Button
 
                 android:id="@+id/kineTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="sendKine"
-                android:text="K T"
+                android:onClick="openKineTest"
+                android:text="@string/kine_test_button"
                 android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/kineTestText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/kine_test_text"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
 
         </TableRow>
 
+        <TableRow>
+            <Button
 
+                android:id="@+id/psyTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="openPsyTest"
+                android:text="@string/psy_test_button"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/psyTestText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/psy_test_text"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
+
+        </TableRow>
+
+        <TableRow>
+            <Button
+
+                android:id="@+id/hospitalisation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="openHospitalisation"
+                android:text="@string/hospitalisation_button"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/hospitalisationText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hospitalisation_text"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
+
+        </TableRow>
 
     </TableLayout>
 </ScrollView>

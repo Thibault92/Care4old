@@ -18,24 +18,36 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Result"
-        android:gravity="start"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        <TableRow>
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Result"
+            android:gravity="start"
+            android:id="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:src="@drawable/ic_action_search"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="doDialogSearchQuery"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton"
+                android:src="@drawable/ic_action_search"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:onClick="doDialogSearchQuery"/>
+        </TableRow>
+
+        <Button
+
+            android:id="@+id/paientPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="openPatient"
+            android:text="Page Patient"
+            android:layout_weight="1"/>
+
     </TableLayout>
 
 </ScrollView>

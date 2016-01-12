@@ -2,10 +2,7 @@ package com.example.tinyl.care4old;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class PatientPage extends AppCompatActivity {
@@ -17,28 +14,32 @@ public class PatientPage extends AppCompatActivity {
 
     }
 
-    public void sendPsycho(View view) {
+    public void openPsyTest(View view) {
         Intent intent = new Intent(PatientPage.this, PsychologicalTest.class);
         startActivity(intent);
+        finish();
     }
 
 
-    public void sendHospitalisation(View view)
+    public void openHospitalisation(View view)
     {
         Intent intent = new Intent(PatientPage.this, Hospitalisation.class);
         startActivity(intent);
+        finish();
     }
 
-    public void sendKine(View view)
+    public void openKineTest (View view)
     {
         Intent intent = new Intent(PatientPage.this, KinesitherapeuticalReport.class);
         startActivity(intent);
+        finish();
     }
 
-    public void sendMCheck(View view)
+    public void openMCheck(View view)
     {
         Intent intent = new Intent(PatientPage.this, MedicalCheck.class);
         startActivity(intent);
+        finish();
     }
 
 }
