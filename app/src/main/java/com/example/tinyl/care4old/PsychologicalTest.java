@@ -166,6 +166,7 @@ public class PsychologicalTest extends AppCompatActivity {
     {
         Intent intent = new Intent(PsychologicalTest.this, PatientPage.class);
         startActivity(intent);
+        finish();
     }
 
     private View.OnClickListener reset = new View.OnClickListener() {

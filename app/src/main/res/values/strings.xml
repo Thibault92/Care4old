@@ -148,5 +148,7 @@
     <string name="save">Sauv.</string>
     <string name="reset">Reset</string>
     <string name="cancel">Annuler</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Search my app</string>
 
 </resources>

@@ -279,7 +279,8 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
             showProgress(false);
 
             if (success) {
-                Intent intent = new Intent(Care4Old.this, PatientPage.class);
+                //Intent intent = new Intent(Care4Old.this, PatientPage.class);
+                Intent intent = new Intent(Care4Old.this, MainPagePro.class);
                 startActivity(intent);
                 finish();
 
