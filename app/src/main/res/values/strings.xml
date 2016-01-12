@@ -159,5 +159,6 @@
     <string name="psy_test_text">Seance Psychologique</string>
     <string name="hospitalisation_button">Hospitalisation</string>
     <string name="hospitalisation_text">Hospitalisation</string>
+    <string name="patient_info">Informations sur le patient:</string>
 
 </resources>
