@@ -29,7 +29,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
+            "mail42@reponse.uni:84422448"
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
