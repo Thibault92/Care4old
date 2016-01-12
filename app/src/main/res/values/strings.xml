@@ -162,5 +162,6 @@
     <string name="patient_info">Informations sur le patient:</string>
     <string name="back">Retour</string>
     <string name="quit">Quitter</string>
+    <string name="done">Done</string>
 
 </resources>
