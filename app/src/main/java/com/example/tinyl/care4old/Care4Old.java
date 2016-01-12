@@ -216,8 +216,10 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
+            boolean result = false;
+
             try {
-                doHttpRequest();
+                result = doHttpRequest();
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
@@ -232,7 +234,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
             }
 
             // TODO: register the new account here.
-            return doHttpRequest();
+            return result;
         }
 
         @Override
@@ -261,7 +263,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
     }
 
     boolean doHttpRequest() {
-        return true;
+        return false;
     }
 
 }
