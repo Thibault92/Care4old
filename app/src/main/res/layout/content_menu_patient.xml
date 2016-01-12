@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_menu_patient"
+    tools:context="com.example.tinyl.care4old.MenuPatient">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:id="@+id/menu_patient"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu Patient : "
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="start"/>
+
+        <TableRow>
+
+            <Button
+
+                android:id="@+id/patient_page_pro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="openPatient"
+                android:text="Test. Medic."
+                android:layout_weight="1"/>
+
+            <TextView
+
+                android:id="@+id/fiche_patient"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Tests médicaux à faire au patient "
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+
+                android:id="@+id/historique"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="openHistorique"
+                android:text="Histori. Test."
+                android:layout_weight="1"/>
+
+            <TextView
+
+                android:id="@+id/historique_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Historique des tests "
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+
+                android:id="@+id/tests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="openEval"
+                android:text="Eval. Gen."
+                android:layout_weight="1"/>
+
+            <TextView
+
+                android:id="@+id/tests_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Evaluation générale du patient "
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
+
+        </TableRow>
+
+
+        <Button
+
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="previousPage"
+            android:text="@string/back"
+            android:layout_weight="1"/>
+
+    </TableLayout>
+</ScrollView>

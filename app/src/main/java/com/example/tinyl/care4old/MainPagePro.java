@@ -45,10 +45,11 @@ public class MainPagePro extends AppCompatActivity {
         onSearchRequested();
     }
 
-    public void openPatient(View view)
+    public void openPatientMenu(View view)
     {
-        Intent intent = new Intent(MainPagePro.this, PatientPage.class);
+        Intent intent = new Intent(MainPagePro.this, MenuPatient.class);
         startActivity(intent);
+        finish();
     }
 
     public void openPatientPerso(View view)

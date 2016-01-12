@@ -116,7 +116,7 @@ public class PatientPage extends AppCompatActivity {
 
     public void previousPage(View view)
     {
-        Intent intent = new Intent(PatientPage.this, MainPagePro.class);
+        Intent intent = new Intent(PatientPage.this, MenuPatient.class);
         startActivity(intent);
         finish();
     }

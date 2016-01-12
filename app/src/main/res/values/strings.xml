@@ -163,5 +163,6 @@
     <string name="back">Retour</string>
     <string name="quit">Quitter</string>
     <string name="done">Done</string>
+    <string name="title_activity_menu_patient">MenuPatient</string>
 
 </resources>

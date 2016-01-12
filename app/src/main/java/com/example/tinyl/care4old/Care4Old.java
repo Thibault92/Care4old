@@ -39,13 +39,12 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_care4_old);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -71,8 +70,6 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
     }
 
     private void populateAutoComplete() {
@@ -100,13 +97,6 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
 
         boolean cancel = false;
         View focusView = null;
-
-        // Check for a valid password, if the user entered one.
-       /* if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }*/
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(password)) {
@@ -250,7 +240,6 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
             mAuthTask = null;
 
             if (success) {
-                //Intent intent = new Intent(Care4Old.this, PatientPage.class);
                 openMainPage();
                 finish();
 
@@ -272,7 +261,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
     }
 
     boolean doHttpRequest() {
-        return false;
+        return true;
     }
 
 }

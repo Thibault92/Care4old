@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Result"
+            android:text="Choisir le patient"
             android:gravity="start"
             android:id="@+id/textView"
             android:layout_alignParentTop="true"
@@ -44,8 +44,8 @@
             android:id="@+id/paientPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="openPatient"
-            android:text="Page Patient"
+            android:onClick="openPatientMenu"
+            android:text="Menu Patient"
             android:layout_weight="1"/>
         <Button
 
