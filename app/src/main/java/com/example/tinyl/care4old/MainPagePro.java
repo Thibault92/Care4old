@@ -38,7 +38,7 @@ public class MainPagePro extends AppCompatActivity {
 
     private void doSearchQuery(String query) {
         Log.i(TAG, "in doSearchQuery, query string: " + query);
-//        you would probably include all your search and display code here
+//        Searching Query here
     }
 
     public void doDialogSearchQuery(View view) {
@@ -49,6 +49,18 @@ public class MainPagePro extends AppCompatActivity {
     {
         Intent intent = new Intent(MainPagePro.this, PatientPage.class);
         startActivity(intent);
+    }
+
+    public void openPatientPerso(View view)
+    {
+        Intent intent = new Intent(MainPagePro.this, PatientPagePerso.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void quitApp(View view)
+    {
+        finish();
     }
 
 }

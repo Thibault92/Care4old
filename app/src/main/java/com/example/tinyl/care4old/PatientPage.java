@@ -42,4 +42,11 @@ public class PatientPage extends AppCompatActivity {
         finish();
     }
 
+    public void previousPage(View view)
+    {
+        Intent intent = new Intent(PatientPage.this, MainPagePro.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

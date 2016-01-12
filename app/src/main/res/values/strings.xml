@@ -160,5 +160,7 @@
     <string name="hospitalisation_button">Hospitalisation</string>
     <string name="hospitalisation_text">Hospitalisation</string>
     <string name="patient_info">Informations sur le patient:</string>
+    <string name="back">Retour</string>
+    <string name="quit">Quitter</string>
 
 </resources>
