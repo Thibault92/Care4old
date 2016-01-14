@@ -164,5 +164,6 @@
     <string name="quit">Quitter</string>
     <string name="done">Done</string>
     <string name="title_activity_menu_patient">MenuPatient</string>
+    <string name="title_activity_physician_page">PhysicianPage</string>
 
 </resources>

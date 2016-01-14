@@ -1,5 +1,6 @@
 package com.example.tinyl.care4old;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -23,6 +24,8 @@ public class PatientPagePerso extends AppCompatActivity {
     TextView isMaid;
     TextView isMeal;
     TextView isAssistance;
+    TextView physician;
+    TextView physicianMail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,12 @@ public class PatientPagePerso extends AppCompatActivity {
         emergency = (TextView) findViewById(R.id.emergency_bdd);
         emergency.setText("+42emergency");
 
+        physician = (TextView) findViewById(R.id.physician_bdd);
+        physician.setText("+42emergency");
+
+        physicianMail = (TextView) findViewById(R.id.physician_mail_bdd);
+        physicianMail.setText("+42emergency");
+
         status = (TextView) findViewById(R.id.status_bdd);
         status.setText("Solo");
 
@@ -83,6 +92,13 @@ public class PatientPagePerso extends AppCompatActivity {
         isAssistance = (TextView) findViewById(R.id.is_assistance_bdd);
         isAssistance.setText("Oui");
 
+    }
+
+    public void openMedecin(View view)
+    {
+        Intent intent = new Intent(PatientPagePerso.this, PhysicianPage.class);
+        startActivity(intent);
+        finish();
     }
 
     public void quitApp(View view)

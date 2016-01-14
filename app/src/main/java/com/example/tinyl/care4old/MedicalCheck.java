@@ -41,8 +41,6 @@ public class MedicalCheck extends AppCompatActivity {
     EditText albumine = null;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

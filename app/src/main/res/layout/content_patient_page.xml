@@ -327,7 +327,49 @@
 
         </TableRow>
 
+        <TableRow>
 
+            <TextView
+                android:id="@+id/physician"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Médecin traitant :"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
+
+            <TextView
+                android:id="@+id/physician_bdd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text=" xx "
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/physician_mail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Mail du médecin :"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
+
+            <TextView
+                android:id="@+id/physician_mail_bdd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text=" xx@xxxx.com "
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="start"/>
+
+        </TableRow>
 
         <TableRow>
 

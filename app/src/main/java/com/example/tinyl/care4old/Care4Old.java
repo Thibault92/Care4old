@@ -263,7 +263,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
     }
 
     boolean doHttpRequest() {
-        return false;
+        return true;
     }
 
 }

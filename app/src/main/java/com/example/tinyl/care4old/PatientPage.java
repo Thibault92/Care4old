@@ -24,6 +24,8 @@ public class PatientPage extends AppCompatActivity {
     TextView isMaid;
     TextView isMeal;
     TextView isAssistance;
+    TextView physician;
+    TextView physicianMail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,12 @@ public class PatientPage extends AppCompatActivity {
 
         emergency = (TextView) findViewById(R.id.emergency_bdd);
         emergency.setText("+42emergency");
+
+        physician = (TextView) findViewById(R.id.physician_bdd);
+        physician.setText("+42emergency");
+
+        physicianMail = (TextView) findViewById(R.id.physician_mail_bdd);
+        physicianMail.setText("+42emergency");
 
         status = (TextView) findViewById(R.id.status_bdd);
         status.setText("Solo");

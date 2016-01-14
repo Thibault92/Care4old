@@ -89,6 +89,11 @@
             android:label="@string/title_activity_menu_patient"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".PhysicianPage"
+            android:label="@string/title_activity_physician_page"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
