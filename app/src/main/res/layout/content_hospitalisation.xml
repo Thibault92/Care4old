@@ -31,13 +31,9 @@
             android:layout_height="wrap_content"
             android:text="Date"
             android:textStyle="bold"
-            android:textColor="#000000"
-            android:gravity="center"/>
-
-        <Button android:id="@+id/pickEntryDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick a date"/>
+            android:textColor="#0000FF"
+            android:gravity="center"
+            android:clickable="true"/>
 
     </TableRow>
 
@@ -60,13 +56,9 @@
             android:layout_height="wrap_content"
             android:text="Date"
             android:textStyle="bold"
-            android:textColor="#000000"
-            android:gravity="center"/>
-
-        <Button android:id="@+id/pickExitDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick a date"/>
+            android:textColor="#0000FF"
+            android:gravity="center"
+            android:clickable="true"/>
 
     </TableRow>
 

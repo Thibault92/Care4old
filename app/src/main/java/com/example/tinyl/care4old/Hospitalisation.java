@@ -50,18 +50,16 @@ public class Hospitalisation extends AppCompatActivity {
 
     private void chargeViewHospital() {
         startDateDisplay = (TextView) findViewById(R.id.displayEntryDate);
-        startPickDate = (Button) findViewById(R.id.pickEntryDate);
 
         endDateDisplay = (TextView) findViewById(R.id.displayExitDate);
-        endPickDate = (Button) findViewById(R.id.pickExitDate);
 
-        startPickDate.setOnClickListener(new View.OnClickListener() {
+        startDateDisplay.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(START_DATE_DIALOG_ID);
             }
         });
 
-        endPickDate.setOnClickListener(new View.OnClickListener() {
+        endDateDisplay.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(END_DATE_DIALOG_ID);
             }

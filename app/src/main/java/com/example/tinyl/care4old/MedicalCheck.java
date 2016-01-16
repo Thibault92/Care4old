@@ -13,6 +13,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.Calendar;
 
 public class MedicalCheck extends AppCompatActivity {
@@ -25,7 +32,6 @@ public class MedicalCheck extends AppCompatActivity {
 
 
     private TextView mDateDisplay;
-    private Button mPickDate;
     private int mYear;
     private int mMonth;
     private int mDay;
@@ -33,12 +39,15 @@ public class MedicalCheck extends AppCompatActivity {
     static final int START_DATE_DIALOG_ID = 0;
 
     private Button resetData;
+    private Button saveData;
 
     EditText pressureScore = null;
     EditText frequency = null;
     EditText vitD = null;
     EditText CRP = null;
     EditText albumine = null;
+
+    String Height, Weight, Bmi, Albumin, Crp, VitaminD, Frequency, Pressure, Gir;
 
 
     @Override
@@ -47,50 +56,74 @@ public class MedicalCheck extends AppCompatActivity {
         setContentView(R.layout.activity_medical_check);
 
         chargeViewMedCheck();
-
-        resetData = (Button) findViewById(R.id.reset);
-        resetData.setOnClickListener(reset);
+        chargeListeners();
 
     }
 
+
+
+
     private void chargeViewMedCheck(){
         envoyer = (Button)findViewById(R.id.calcul);
-        taille = (EditText)findViewById(R.id.sc_height);
-        poids = (EditText)findViewById(R.id.sc_weight);
-        result = (TextView)findViewById(R.id.sc_bmi);
+        taille  = (EditText)findViewById(R.id.sc_height);
+        poids   = (EditText)findViewById(R.id.sc_weight);
+        result  = (TextView)findViewById(R.id.sc_bmi);
+
+        mDateDisplay = (TextView) findViewById(R.id.displayTestDate);
+
+        final Calendar c = Calendar.getInstance();
+        mYear   = c.get(Calendar.YEAR);
+        mMonth  = c.get(Calendar.MONTH);
+        mDay    = c.get(Calendar.DAY_OF_MONTH);
+
+        pressureScore = (EditText) findViewById(R.id.sc_pressure);
+        frequency     = (EditText) findViewById(R.id.sc_freq);
+        vitD          = (EditText) findViewById(R.id.sc_vitd);
+        CRP           = (EditText) findViewById(R.id.sc_crp);
+        albumine      = (EditText) findViewById(R.id.sc_albumin);
+
+        resetData     = (Button) findViewById(R.id.reset);
+        saveData      = (Button) findViewById(R.id.save);
+
+    }
+
+
+    private void chargeListeners(){
 
         envoyer.setOnClickListener(envoyerListener);
         taille.addTextChangedListener(textWatcher);
         poids.addTextChangedListener(textWatcher);
 
-
-        mDateDisplay = (TextView) findViewById(R.id.displayTestDate);
-        mPickDate = (Button) findViewById(R.id.pickTestDate);
-
-        mPickDate.setOnClickListener(new View.OnClickListener() {
+        mDateDisplay.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(START_DATE_DIALOG_ID);
             }
         });
-
-        final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
-
         updateStartDisplay();
-
-        pressureScore = (EditText) findViewById(R.id.sc_pressure);
-        frequency = (EditText) findViewById(R.id.sc_freq);
-        vitD = (EditText) findViewById(R.id.sc_vitd);
-        CRP = (EditText) findViewById(R.id.sc_crp);
-        albumine = (EditText) findViewById(R.id.sc_albumin);
 
         pressureScore.addTextChangedListener(textWatcher);
         frequency.addTextChangedListener(textWatcher);
         vitD.addTextChangedListener(textWatcher);
         CRP.addTextChangedListener(textWatcher);
         albumine.addTextChangedListener(textWatcher);
+
+        resetData.setOnClickListener(reset);
+
+        saveData.setOnClickListener(new Button.OnClickListener(){
+
+            public void onClick(View v)
+            {
+                try{
+
+                    // CALL GetText method to make post method call
+                    GetText();
+                }
+                catch(Exception ex)
+                {
+                    //content.setText(" url exeption! " );
+                }
+            }
+        });
     }
 
     private void updateStartDisplay() {
@@ -187,7 +220,106 @@ public class MedicalCheck extends AppCompatActivity {
 
             setContentView(R.layout.activity_medical_check);
             chargeViewMedCheck();
+            chargeListeners();
 
         }
     };
+
+    public  void  GetText()  throws UnsupportedEncodingException
+    {
+
+        //String Height, Weight, Bmi, Albumin, Crp, VitaminD, Frequency, Pressure, Gir;
+        // Get user defined values
+        Height      = taille.getText().toString();
+        Weight      = poids.getText().toString();
+        Bmi         = result.getText().toString();
+        Albumin     = albumine.getText().toString();
+        Crp         = CRP.getText().toString();
+        VitaminD    = vitD.getText().toString();
+        Frequency   = frequency.getText().toString();
+        Pressure    = pressureScore.getText().toString();
+
+        // Create data variable for sent values to server
+
+        String data = URLEncoder.encode("height", "UTF-8")
+                + "=" + URLEncoder.encode(Height, "UTF-8");
+
+        data += "&" + URLEncoder.encode("weight", "UTF-8") + "="
+                + URLEncoder.encode(Weight, "UTF-8");
+
+        data += "&" + URLEncoder.encode("bmi", "UTF-8")
+                + "=" + URLEncoder.encode(Bmi, "UTF-8");
+
+        data += "&" + URLEncoder.encode("albumin", "UTF-8")
+                + "=" + URLEncoder.encode(Albumin, "UTF-8");
+
+        data += "&" + URLEncoder.encode("crp", "UTF-8")
+                + "=" + URLEncoder.encode(Crp, "UTF-8");
+
+        data += "&" + URLEncoder.encode("vitamin_d", "UTF-8")
+                + "=" + URLEncoder.encode(VitaminD, "UTF-8");
+
+        data += "&" + URLEncoder.encode("frequency", "UTF-8")
+                + "=" + URLEncoder.encode(Frequency, "UTF-8");
+
+        data += "&" + URLEncoder.encode("pressure", "UTF-8")
+                + "=" + URLEncoder.encode(Pressure, "UTF-8");
+
+        /*data += "&" + URLEncoder.encode("pass", "UTF-8")
+                + "=" + URLEncoder.encode(Albumin, "UTF-8");*/
+
+        String text = "";
+        BufferedReader reader=null;
+
+        // Send data
+        try
+        {
+
+            // Defined URL  where to send data
+            URL url = new URL("http://https://care4old.ajoubert.com/medical_check");
+
+            // Send POST data request
+
+            URLConnection conn = url.openConnection();
+            conn.setDoOutput(true);
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write( data );
+            wr.flush();
+
+            // Get the server response
+
+            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+
+            // Read Server Response
+            while((line = reader.readLine()) != null)
+            {
+                // Append server response in string
+                sb.append(line + "\n");
+            }
+
+
+            text = sb.toString();
+        }
+        catch(Exception ex)
+        {
+
+        }
+        finally
+        {
+            try
+            {
+
+                reader.close();
+            }
+
+            catch(Exception ex) {}
+        }
+
+        // Show response on activity
+        //content.setText( text  );
+
+    }
+
 }
