@@ -27,6 +27,8 @@ public class PatientPage extends AppCompatActivity {
     TextView physician;
     TextView physicianMail;
 
+    private String[] patientData = {"azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty","azerty"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +94,7 @@ public class PatientPage extends AppCompatActivity {
         isAssistance = (TextView) findViewById(R.id.is_assistance_bdd);
         isAssistance.setText("Oui");
 
+        oldFields();
     }
 
     public void openPsyTest(View view) {
@@ -127,6 +130,31 @@ public class PatientPage extends AppCompatActivity {
         Intent intent = new Intent(PatientPage.this, MenuPatient.class);
         startActivity(intent);
         finish();
+    }
+
+    public void oldFields(){
+
+        //String Height, Weight, Bmi, Albumin, Crp, VitaminD, Frequency, Pressure, Gir;
+
+        birthday.setText(patientData[0]);
+        gender.setText(patientData[1]);
+        adress.setText(patientData[2]);
+        zip.setText(patientData[3]);
+        city.setText(patientData[4]);
+        phone.setText(patientData[5]);
+        mobilePhone.setText(patientData[6]);
+        emergency.setText(patientData[7]);
+        status.setText(patientData[8]);
+        accompaniment.setText(patientData[9]);
+        residency.setText(patientData[10]);
+        isFinancial.setText(patientData[11]);
+        isPedicure.setText(patientData[12]);
+        isMaid.setText(patientData[13]);
+        isMeal.setText(patientData[14]);
+        isAssistance.setText(patientData[15]);
+        physician.setText(patientData[16]);
+        physicianMail.setText(patientData[17]);
+
     }
 
 }

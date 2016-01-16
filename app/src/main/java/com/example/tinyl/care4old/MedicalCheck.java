@@ -7,13 +7,21 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
@@ -48,6 +56,8 @@ public class MedicalCheck extends AppCompatActivity {
     EditText albumine = null;
 
     String Height, Weight, Bmi, Albumin, Crp, VitaminD, Frequency, Pressure, Gir;
+
+    private String[] medicalData = {"a","z","e","r","t","y","u","i"};
 
 
     @Override
@@ -181,6 +191,7 @@ public class MedicalCheck extends AppCompatActivity {
         }
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            oldFields();
         }
         @Override
         public void afterTextChanged(Editable s) {
@@ -319,6 +330,38 @@ public class MedicalCheck extends AppCompatActivity {
 
         // Show response on activity
         //content.setText( text  );
+
+    }
+
+    private void getInfoFromDB(){
+
+
+        InputStream is = null;
+
+        try{
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost("https://are4old.ajoubert.com/medical_check");
+            HttpResponse response = httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+            is = entity.getContent();
+        }catch(Exception e){
+            Log.e("log_tag", "Error in http connection" + e.toString());
+        }
+
+    }
+
+    public void oldFields(){
+
+        //String Height, Weight, Bmi, Albumin, Crp, VitaminD, Frequency, Pressure, Gir;
+
+        taille.setText(medicalData[0]);
+        poids.setText(medicalData[1]);
+        result.setText(medicalData[2]);
+        albumine.setText(medicalData[3]);
+        CRP.setText(medicalData[4]);
+        vitD.setText(medicalData[5]);
+        frequency.setText(medicalData[6]);
+        pressureScore.setText(medicalData[7]);
 
     }
 

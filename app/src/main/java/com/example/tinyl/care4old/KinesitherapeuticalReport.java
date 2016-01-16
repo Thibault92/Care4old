@@ -238,7 +238,7 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
         {
 
             // Defined URL  where to send data
-            URL url = new URL("http://https://care4old.ajoubert.com/kine");
+            URL url = new URL("https://care4old.ajoubert.com/kine");
 
             // Send POST data request
 
