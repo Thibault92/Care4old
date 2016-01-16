@@ -13,6 +13,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,10 +41,17 @@ public class PsychologicalTest extends AppCompatActivity {
     private int mDay;
 
     private Button resetData;
+    private Button saveData;
 
     EditText grecoGlobal;
     EditText grecoImmediat;
     EditText grecoDiff;
+
+    String[] orientationSensorielleNotes;
+    String[] posturalNotes;
+    String[] marchStabilityNotes;
+
+    String Total, GrecoGlobal, GrecoImmediat, GrecoDiffere;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +59,7 @@ public class PsychologicalTest extends AppCompatActivity {
         setContentView(R.layout.activity_psychological_test);
 
         chargeView();
-
-        resetData = (Button) findViewById(R.id.reset);
-        resetData.setOnClickListener(reset);
+        chargeListeners();
 
     }
 
@@ -62,12 +74,26 @@ public class PsychologicalTest extends AppCompatActivity {
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
 
-        updateStartDisplay();
-
 // Save spinner values and calculate it automatically
-        String[] orientationSensorielleNotes = getResources().getStringArray(R.array.Notes_6);
-        String[] posturalNotes = getResources().getStringArray(R.array.Notes_8);
-        String[] marchStabilityNotes = getResources().getStringArray(R.array.Notes_10);
+        orientationSensorielleNotes = getResources().getStringArray(R.array.Notes_6);
+        posturalNotes = getResources().getStringArray(R.array.Notes_8);
+        marchStabilityNotes = getResources().getStringArray(R.array.Notes_10);
+
+
+
+        grecoGlobal = (EditText) findViewById(R.id.sc_global_score);
+        grecoImmediat = (EditText) findViewById(R.id.sc_ra_imm);
+        grecoDiff = (EditText) findViewById(R.id.sc_ra_diff);
+
+        resetData = (Button) findViewById(R.id.reset);
+        saveData      = (Button) findViewById(R.id.save);
+
+    }
+
+    private void chargeListeners(){
+
+
+        updateStartDisplay();
 
         // Array adapter to set data in Spinner Widget
         ArrayAdapter<String> adapter6 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, orientationSensorielleNotes);
@@ -85,15 +111,30 @@ public class PsychologicalTest extends AppCompatActivity {
         setListenerToSpinners();
         resultCalculate();
 
-        grecoGlobal = (EditText) findViewById(R.id.sc_global_score);
-        grecoImmediat = (EditText) findViewById(R.id.sc_ra_imm);
-        grecoDiff = (EditText) findViewById(R.id.sc_ra_diff);
-
         grecoGlobal.addTextChangedListener(textWatcher);
         grecoImmediat.addTextChangedListener(textWatcher);
         grecoDiff.addTextChangedListener(textWatcher);
 
+        resetData.setOnClickListener(reset);
+
+        saveData.setOnClickListener(new Button.OnClickListener(){
+
+            public void onClick(View v)
+            {
+                try{
+
+                    // CALL GetText method to make post method call
+                    GetText();
+                }
+                catch(Exception ex)
+                {
+                    //content.setText(" url exeption! " );
+                }
+            }
+        });
     }
+
+
 
     private void updateStartDisplay() {
         mDateDisplay.setText(
@@ -175,9 +216,89 @@ public class PsychologicalTest extends AppCompatActivity {
 
             setContentView(R.layout.activity_psychological_test);
             chargeView();
+            chargeListeners();
 
         }
     };
+
+
+    public  void  GetText()  throws UnsupportedEncodingException
+    {
+
+        //String Total, GrecoGlobal, GrecoImmediat, GrecoDiffere;
+        // Get user defined values
+        Total           = total.getText().toString();
+        GrecoGlobal     = grecoGlobal.getText().toString();
+        GrecoImmediat   = grecoImmediat.getText().toString();
+        GrecoDiffere    = grecoDiff.getText().toString();
+
+        // Create data variable for sent values to server
+
+        String data = URLEncoder.encode("minibesttest_score", "UTF-8")
+                + "=" + URLEncoder.encode(Total, "UTF-8");
+
+        data += "&" + URLEncoder.encode("greco_global", "UTF-8") + "="
+                + URLEncoder.encode(GrecoGlobal, "UTF-8");
+
+        data += "&" + URLEncoder.encode("greco_immediat", "UTF-8")
+                + "=" + URLEncoder.encode(GrecoImmediat, "UTF-8");
+
+        data += "&" + URLEncoder.encode("greco_differe", "UTF-8")
+                + "=" + URLEncoder.encode(GrecoDiffere, "UTF-8");
+
+        String text = "";
+        BufferedReader reader=null;
+
+        // Send data
+        try
+        {
+
+            // Defined URL  where to send data
+            URL url = new URL("http://https://care4old.ajoubert.com/psycho");
+
+            // Send POST data request
+
+            URLConnection conn = url.openConnection();
+            conn.setDoOutput(true);
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write( data );
+            wr.flush();
+
+            // Get the server response
+
+            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+
+            // Read Server Response
+            while((line = reader.readLine()) != null)
+            {
+                // Append server response in string
+                sb.append(line + "\n");
+            }
+
+
+            text = sb.toString();
+        }
+        catch(Exception ex)
+        {
+
+        }
+        finally
+        {
+            try
+            {
+
+                reader.close();
+            }
+
+            catch(Exception ex) {}
+        }
+
+        // Show response on activity
+        //content.setText( text  );
+
+    }
 
 
 }

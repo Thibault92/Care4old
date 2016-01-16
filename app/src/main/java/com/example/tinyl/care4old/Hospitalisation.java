@@ -13,14 +13,19 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.Calendar;
 
 public class Hospitalisation extends AppCompatActivity {
 
     private TextView startDateDisplay;
     private TextView endDateDisplay;
-    private Button startPickDate;
-    private Button endPickDate;
 
     static final int START_DATE_DIALOG_ID = 0;
     static final int END_DATE_DIALOG_ID = 1;
@@ -34,8 +39,11 @@ public class Hospitalisation extends AppCompatActivity {
     private int mDay2;
 
     private Button resetData;
+    private Button saveData;
 
     EditText commentary = null;
+
+    String dateStart, dateEnd, reason;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,15 +51,30 @@ public class Hospitalisation extends AppCompatActivity {
         setContentView(R.layout.activity_hospitalisation);
 
         chargeViewHospital();
+        chargeListeners();
 
-        resetData = (Button) findViewById(R.id.reset);
-        resetData.setOnClickListener(reset);
     }
 
     private void chargeViewHospital() {
         startDateDisplay = (TextView) findViewById(R.id.displayEntryDate);
-
         endDateDisplay = (TextView) findViewById(R.id.displayExitDate);
+
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        final Calendar c2 = Calendar.getInstance();
+        mYear2 = c2.get(Calendar.YEAR);
+        mMonth2 = c2.get(Calendar.MONTH);
+        mDay2 = c2.get(Calendar.DAY_OF_MONTH);
+
+        commentary = (EditText) findViewById(R.id.raison);
+        resetData = (Button) findViewById(R.id.reset);
+
+    }
+
+    private void chargeListeners(){
 
         startDateDisplay.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -65,21 +88,11 @@ public class Hospitalisation extends AppCompatActivity {
             }
         });
 
-        final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
-
-        final Calendar c2 = Calendar.getInstance();
-        mYear2 = c2.get(Calendar.YEAR);
-        mMonth2 = c2.get(Calendar.MONTH);
-        mDay2 = c2.get(Calendar.DAY_OF_MONTH);
-
         updateStartDisplay();
         updateEndDisplay();
 
-        commentary = (EditText) findViewById(R.id.raison);
         commentary.addTextChangedListener(textWatcher);
+        resetData.setOnClickListener(reset);
     }
 
     private void updateStartDisplay() {
@@ -168,7 +181,84 @@ public class Hospitalisation extends AppCompatActivity {
 
             setContentView(R.layout.activity_hospitalisation);
             chargeViewHospital();
+            chargeListeners();
 
         }
     };
+
+    public  void  GetText()  throws UnsupportedEncodingException
+    {
+
+        //String dateStart, dateEnd, reason;
+        // Get user defined values
+        dateStart   = startDateDisplay.getText().toString();
+        dateEnd     = endDateDisplay.getText().toString();
+        reason      = commentary.getText().toString();
+
+
+        // Create data variable for sent values to server
+
+        String data = URLEncoder.encode("dateStart", "UTF-8")
+                + "=" + URLEncoder.encode(dateStart, "UTF-8");
+
+        data += "&" + URLEncoder.encode("dateEnd", "UTF-8") + "="
+                + URLEncoder.encode(dateEnd, "UTF-8");
+
+        data += "&" + URLEncoder.encode("reason", "UTF-8")
+                + "=" + URLEncoder.encode(reason, "UTF-8");
+
+
+        String text = "";
+        BufferedReader reader=null;
+
+        // Send data
+        try
+        {
+
+            // Defined URL  where to send data
+            URL url = new URL("http://https://care4old.ajoubert.com/hospitalisation");
+
+            // Send POST data request
+
+            URLConnection conn = url.openConnection();
+            conn.setDoOutput(true);
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write( data );
+            wr.flush();
+
+            // Get the server response
+
+            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+
+            // Read Server Response
+            while((line = reader.readLine()) != null)
+            {
+                // Append server response in string
+                sb.append(line + "\n");
+            }
+
+
+            text = sb.toString();
+        }
+        catch(Exception ex)
+        {
+
+        }
+        finally
+        {
+            try
+            {
+
+                reader.close();
+            }
+
+            catch(Exception ex) {}
+        }
+
+        // Show response on activity
+        //content.setText( text  );
+
+    }
 }
