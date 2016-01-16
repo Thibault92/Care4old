@@ -13,6 +13,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,10 +38,16 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
     private int mDay;
 
     private Button resetData;
+    private Button saveData;
 
     EditText getUp = null;
     EditText slowWalk = null;
     EditText fastWalk = null;
+
+    String[] equilibreNotes;
+    String[] equilibreDynamiqueNotes;
+
+    String Total, SlowWalk, FastWalk, GetUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,25 +55,36 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
         setContentView(R.layout.activity_kinesitherapeutical_report);
 
         chargeViewKine();
-
-        resetData = (Button) findViewById(R.id.reset);
-        resetData.setOnClickListener(reset);
+        chargeListeners();
 
     }
 
     private void chargeViewKine(){
-        total = (TextView) findViewById(R.id.totaltinetti_score);
 
+        total        = (TextView) findViewById(R.id.totaltinetti_score);
         mDateDisplay = (TextView) findViewById(R.id.displayTestDate);
+
         final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        mYear   = c.get(Calendar.YEAR);
+        mMonth  = c.get(Calendar.MONTH);
+        mDay    = c.get(Calendar.DAY_OF_MONTH);
+
+        equilibreNotes          = getResources().getStringArray(R.array.Notes_16);
+        equilibreDynamiqueNotes = getResources().getStringArray(R.array.Notes_12);
+
+
+        slowWalk = (EditText) findViewById(R.id.lente_value);
+        fastWalk = (EditText) findViewById(R.id.rapide_value);
+        getUp    = (EditText) findViewById(R.id.temps_value);
+
+        resetData = (Button) findViewById(R.id.reset);
+        saveData  = (Button) findViewById(R.id.save);
+
+    }
+
+    private void chargeListeners(){
 
         updateStartDisplay();
-
-        String[] equilibreNotes = getResources().getStringArray(R.array.Notes_16);
-        String[] equilibreDynamiqueNotes = getResources().getStringArray(R.array.Notes_12);
 
         // Array adapter to set data in Spinner Widget
         ArrayAdapter<String> adapter16 = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, equilibreNotes);
@@ -75,14 +99,27 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
         setListenerToSpinners();
         resultCalculate();
 
-
-        slowWalk = (EditText) findViewById(R.id.lente_value);
-        fastWalk = (EditText) findViewById(R.id.rapide_value);
-        getUp = (EditText) findViewById(R.id.temps_value);
-
         slowWalk.addTextChangedListener(textWatcher);
         fastWalk.addTextChangedListener(textWatcher);
         getUp.addTextChangedListener(textWatcher);
+
+        resetData.setOnClickListener(reset);
+        saveData.setOnClickListener(new Button.OnClickListener(){
+
+            public void onClick(View v)
+            {
+                try{
+
+                    // CALL GetText method to make post method call
+                    GetText();
+                }
+                catch(Exception ex)
+                {
+                    //content.setText(" url exeption! " );
+                }
+            }
+        });
+
     }
 
     private void updateStartDisplay() {
@@ -166,5 +203,85 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
 
         }
     };
+
+    public  void  GetText()  throws UnsupportedEncodingException
+    {
+
+        //String Total, SlowWalk, FastWalk, GetUp;
+        // Get user defined values
+        Total       = total.getText().toString();
+        SlowWalk    = slowWalk.getText().toString();
+        FastWalk    = fastWalk.getText().toString();
+        GetUp       = getUp.getText().toString();
+
+
+        // Create data variable for sent values to server
+
+        String data = URLEncoder.encode("tinetti_poma", "UTF-8")
+                + "=" + URLEncoder.encode(Total, "UTF-8");
+
+        data += "&" + URLEncoder.encode("getupandgo", "UTF-8")
+                + "=" + URLEncoder.encode(GetUp, "UTF-8");
+
+        data += "&" + URLEncoder.encode("slow_walk", "UTF-8") + "="
+                + URLEncoder.encode(SlowWalk, "UTF-8");
+
+        data += "&" + URLEncoder.encode("fast_walk", "UTF-8")
+                + "=" + URLEncoder.encode(FastWalk, "UTF-8");
+
+
+        String text = "";
+        BufferedReader reader=null;
+
+        // Send data
+        try
+        {
+
+            // Defined URL  where to send data
+            URL url = new URL("http://https://care4old.ajoubert.com/kine");
+
+            // Send POST data request
+
+            URLConnection conn = url.openConnection();
+            conn.setDoOutput(true);
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write( data );
+            wr.flush();
+
+            // Get the server response
+
+            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+
+            // Read Server Response
+            while((line = reader.readLine()) != null)
+            {
+                // Append server response in string
+                sb.append(line + "\n");
+            }
+
+
+            text = sb.toString();
+        }
+        catch(Exception ex)
+        {
+
+        }
+        finally
+        {
+            try
+            {
+
+                reader.close();
+            }
+
+            catch(Exception ex) {}
+        }
+
+        // Show response on activity
+        //content.setText( text  );
+
+    }
 
 }

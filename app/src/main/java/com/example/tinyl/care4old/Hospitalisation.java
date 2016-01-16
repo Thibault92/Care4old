@@ -55,25 +55,29 @@ public class Hospitalisation extends AppCompatActivity {
 
     }
 
+//Load Layouts
     private void chargeViewHospital() {
         startDateDisplay = (TextView) findViewById(R.id.displayEntryDate);
-        endDateDisplay = (TextView) findViewById(R.id.displayExitDate);
+        endDateDisplay   = (TextView) findViewById(R.id.displayExitDate);
 
         final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
+        mYear  = c.get(Calendar.YEAR);
         mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        mDay   = c.get(Calendar.DAY_OF_MONTH);
 
         final Calendar c2 = Calendar.getInstance();
-        mYear2 = c2.get(Calendar.YEAR);
+        mYear2  = c2.get(Calendar.YEAR);
         mMonth2 = c2.get(Calendar.MONTH);
-        mDay2 = c2.get(Calendar.DAY_OF_MONTH);
+        mDay2   = c2.get(Calendar.DAY_OF_MONTH);
 
         commentary = (EditText) findViewById(R.id.raison);
-        resetData = (Button) findViewById(R.id.reset);
+        resetData  = (Button) findViewById(R.id.reset);
+        saveData   = (Button) findViewById(R.id.save);
 
     }
 
+
+//Load Listeners
     private void chargeListeners(){
 
         startDateDisplay.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +97,24 @@ public class Hospitalisation extends AppCompatActivity {
 
         commentary.addTextChangedListener(textWatcher);
         resetData.setOnClickListener(reset);
+
+        saveData.setOnClickListener(new Button.OnClickListener(){
+
+            public void onClick(View v)
+            {
+                try{
+
+                    // CALL GetText method to make post method call
+                    GetText();
+                }
+                catch(Exception ex)
+                {
+                    //content.setText(" url exeption! " );
+                }
+            }
+        });
     }
+
 
     private void updateStartDisplay() {
         startDateDisplay.setText(
