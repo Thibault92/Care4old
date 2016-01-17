@@ -191,7 +191,11 @@ public class RegistrationActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            //sendRegistration();
+            try{
+                sendRegistration();
+            }
+            catch(Exception ex) {
+            }
 
         }
     };

@@ -1,28 +1,13 @@
 package com.example.tinyl.care4old;
 
-import android.app.LoaderManager;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class Care4Old extends AppCompatActivity /*implements LoaderManager.LoaderCallbacks<Cursor>*/ {
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -34,7 +19,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
+//    private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -46,7 +31,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
         setContentView(R.layout.activity_care4_old);
 
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+/*        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -54,7 +39,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
 
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login /*|| id == EditorInfo.IME_NULL*/) {
+                if (id == R.id.login ) {
                     attemptLogin();
                     return true;
                 }
@@ -68,11 +53,11 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
             public void onClick(View view) {
                 attemptLogin();
             }
-        });
+        });*/
 
     }
 
-    private void populateAutoComplete() {
+    /*private void populateAutoComplete() {
         getLoaderManager().initLoader(0, null, this);
     }
 
@@ -82,7 +67,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    private void attemptLogin() {
+    /*private void attemptLogin() {
         if (mAuthTask != null) {
             return;
         }
@@ -202,7 +187,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+/*    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
@@ -255,9 +240,13 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
         protected void onCancelled() {
             mAuthTask = null;
         }
-    }
+    }*/
 
-    private void openMainPage(){
+    public void openMainPage(View view){
+        Intent intent = new Intent(Care4Old.this, MainPagePro.class);
+        startActivity(intent);
+    }
+    public void sendRegister(View view){
         Intent intent = new Intent(Care4Old.this, RegistrationActivity.class);
         startActivity(intent);
     }
