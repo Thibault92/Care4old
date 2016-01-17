@@ -165,5 +165,8 @@
     <string name="done">Done</string>
     <string name="title_activity_menu_patient">MenuPatient</string>
     <string name="title_activity_physician_page">PhysicianPage</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>
