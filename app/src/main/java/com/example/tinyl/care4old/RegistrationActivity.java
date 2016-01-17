@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Objects;
@@ -257,15 +259,16 @@ public class RegistrationActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            try{
-                sendRegistration();
-            }
-            catch(Exception ex)
-            {
-                
-            }
 
-
+                new Thread(new Runnable() {
+                    public void run() {
+                        try {
+                            sendRegistration();
+                        } catch (IOException e) {
+                            Log.d("exception", e.toString());
+                        }
+                    }
+                }).start();
         }
     };
 
@@ -413,9 +416,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
     private boolean sendRegistration() throws IOException {
-        String url = "https://care4old.ajoubert.com/register";
+        String url = "http://care4old.ajoubert.com/register";
         URL obj = new URL(url);
-        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         //add request header
         con.setRequestMethod("POST");
@@ -471,6 +474,7 @@ public class RegistrationActivity extends AppCompatActivity {
         in.close();
 
         //print result
+        Log.d("POST Connection result", response.toString());
         return Objects.equals(response.toString(), "success");
     }
 
