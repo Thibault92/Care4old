@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -189,7 +190,11 @@ public class RegistrationActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            //sendRegistration();
+            try{
+                sendRegistration();
+            }
+            catch(Exception ex) {
+            }
 
         }
     };
@@ -471,6 +476,7 @@ public class RegistrationActivity extends AppCompatActivity {
         in.close();
 
         //print result
+        Log.d("POST Connection result", response.toString());
         return Objects.equals(response.toString(), "success");
     }
 
