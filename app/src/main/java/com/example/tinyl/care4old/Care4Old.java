@@ -258,7 +258,7 @@ public class Care4Old extends AppCompatActivity implements LoaderManager.LoaderC
     }
 
     private void openMainPage(){
-        Intent intent = new Intent(Care4Old.this, MainPagePro.class);
+        Intent intent = new Intent(Care4Old.this, RegistrationActivity.class);
         startActivity(intent);
     }
 

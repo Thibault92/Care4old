@@ -60,30 +60,37 @@ public class RegistrationActivity extends AppCompatActivity {
     // Professional Data
     private EditText officename;
 
+    private Button nextButton;
+    private Button resetData;
+
+    private Button patientButton;
+    private Button physicianButton;
+
+    private Button validatePatient;
+    private Button resetPatientData;
+
+    private Button validatePhysician;
+    private Button resetPhysicianData;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
         chargeView();
         activityCommonListeners();
         // Create first form with basic infos
 
-        checkBasicInfoFilled();
+        //checkBasicInfoFilled();
+
         // Click next -> show new screen, choose doctor or patient
+
 
         // Click next -> show doc / patient specific screen
 
         // Click next -> generate HTTP and send request
-    }
-
-    private void checkBasicInfoFilled() {
-        if(email.length() != 0 && pass.length() != 0 && passConfirm.length() != 0 && name.length() != 0 && firstname.length() != 0
-                && street.length() != 0 && zip.length() != 0 && city.length() != 0 && phone.length() != 0 && mobile.length() != 0) { //continue for all
-            showFirstNextButton();
-            nextButton();
-        }
     }
 
     private void chargeView(){
@@ -101,17 +108,8 @@ public class RegistrationActivity extends AppCompatActivity {
         phone       = (EditText)findViewById(R.id.homeTelInput);
         mobile      = (EditText)findViewById(R.id.mobileTelInput);
 
-        physicianName   = (EditText)findViewById(R.id.nomMedecinInput);
-        physicianMail   = (EditText)findViewById(R.id.emailMedecinInput);
-        birthday        = (TextView)findViewById(R.id.birthdayPicker);
-        emergency       = (EditText)findViewById(R.id.emergencyTelInput);
-        status          = (RadioGroup)findViewById(R.id.statusChoice);
-        accompaniment   = (RadioGroup)findViewById(R.id.accompanimentChoice);
-        residency       = (RadioGroup)findViewById(R.id.residencyChoice);
-        isFinancial     = (RadioGroup)findViewById(R.id.financialChoice);
-        isHelp          = (RadioGroup)findViewById(R.id.domicileChoice);
-
-        officename = (EditText)findViewById(R.id.officenameInput);
+        resetData     = (Button) findViewById(R.id.raz);
+        nextButton = (Button) findViewById(R.id.nextCreation);
 
     }
 
@@ -129,7 +127,117 @@ public class RegistrationActivity extends AppCompatActivity {
         city.addTextChangedListener(textWatcher);
         phone.addTextChangedListener(textWatcher);
         mobile.addTextChangedListener(textWatcher);
-/*
+
+        resetData.setOnClickListener(reset);
+        nextButton.setOnClickListener(continueCreation);
+
+    }
+
+    private View.OnClickListener continueCreation = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            if(checkPatterns()){
+                if (isPasswordsMatched()){
+                    setContentView(R.layout.activity_registration_account_choice);
+                    chargeChoiceView();
+                    activityChoiceListeners();
+                }
+            }
+
+        }
+
+    };
+
+    private void chargeChoiceView(){
+        patientButton = (Button) findViewById(R.id.patientAccount);
+        physicianButton = (Button) findViewById(R.id.physicianAccount);
+    }
+
+    private void activityChoiceListeners(){
+        physicianButton.setOnClickListener(physician);
+        patientButton.setOnClickListener(patient);
+    }
+
+    private View.OnClickListener physician = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            setContentView(R.layout.activity_registration_physician);
+            account_type = 1;
+            chargeViewPhysician();
+            chargePhysicianListener();
+
+        }
+    };
+
+    private void chargeViewPhysician(){
+
+        officename = (EditText)findViewById(R.id.officenameInput);
+        validatePhysician = (Button)findViewById(R.id.validateCreation);
+        resetPhysicianData = (Button) findViewById(R.id.raz);
+
+    }
+
+    private void chargePhysicianListener(){
+        officename.addTextChangedListener(textWatcher);
+        validatePhysician.setOnClickListener(savePhysicianData);
+        resetPhysicianData.setOnClickListener(resetPhysician);
+    }
+
+    private View.OnClickListener savePhysicianData = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            //sendRegistration();
+
+        }
+    };
+
+    private View.OnClickListener resetPhysician = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            setContentView(R.layout.activity_registration_physician);
+            account_type = 1;
+            chargeViewPhysician();
+            chargePhysicianListener();
+
+        }
+    };
+
+
+
+
+    private View.OnClickListener patient = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            setContentView(R.layout.activity_registration_account_patient);
+            account_type = 0;
+            chargeViewPatient();
+            activityPatientListeners();
+
+        }
+    };
+
+    private void chargeViewPatient(){
+        physicianName   = (EditText)findViewById(R.id.nomMedecinInput);
+        physicianMail   = (EditText)findViewById(R.id.emailMedecinInput);
+        birthday        = (TextView)findViewById(R.id.birthdayPicker);
+        emergency       = (EditText)findViewById(R.id.emergencyTelInput);
+        status          = (RadioGroup)findViewById(R.id.statusChoice);
+        accompaniment   = (RadioGroup)findViewById(R.id.accompanimentChoice);
+        residency       = (RadioGroup)findViewById(R.id.residencyChoice);
+        isFinancial     = (RadioGroup)findViewById(R.id.financialChoice);
+        isHelp          = (RadioGroup)findViewById(R.id.domicileChoice);
+
+        validatePatient = (Button)findViewById(R.id.validateCreation);
+        resetPatientData = (Button) findViewById(R.id.raz);
+    }
+
+    private void activityPatientListeners(){
+
         physicianName.addTextChangedListener(textWatcher);
         physicianMail.addTextChangedListener(textWatcher);
         birthday.addTextChangedListener(textWatcher);
@@ -140,25 +248,33 @@ public class RegistrationActivity extends AppCompatActivity {
         isFinancial.getCheckedRadioButtonId();
         isHelp.getCheckedRadioButtonId();
 
-        officename.addTextChangedListener(textWatcher);*/
-
-        //resetData.setOnClickListener(reset);
-
-        checkPatterns();
-        isPasswordsMatched();
+        validatePatient.setOnClickListener(savePatientData);
+        resetPatientData.setOnClickListener(resetPatient);
 
     }
 
-    private void showFirstNextButton() {
-        Button nextButton = (Button) findViewById(R.id.nextCreation);
-        nextButton.setVisibility(View.VISIBLE);
-    }
+    private View.OnClickListener savePatientData = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
-    private void nextButton(){
+            //sendRegistration();
 
-        setContentView(R.layout.activity_registration_account_choice);
+        }
+    };
 
-    }
+    private View.OnClickListener resetPatient = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            setContentView(R.layout.activity_registration_account_patient);
+            account_type = 0;
+            chargeViewPatient();
+            activityPatientListeners();
+
+        }
+    };
+
+
     private View.OnClickListener reset = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -170,8 +286,65 @@ public class RegistrationActivity extends AppCompatActivity {
         }
     };
 
-    public boolean checkPatterns() {
-        return checkEmailPattern(email.getText().toString()) && checkPasswordPattern(pass.getText().toString());
+    public boolean checkPatterns(){
+        return
+                checkEmailPattern(email.getText().toString()) &&
+                checkPasswordPattern(pass.getText().toString()) &&
+                checkOnlyTextPattern(name.getText().toString()) &&
+                checkOnlyTextPattern(firstname.getText().toString()) &&
+                checkOnlyTextPattern(city.getText().toString()) &&
+                checkZipPattern(zip.getText().toString()) &&
+                checkHomePhonePattern(phone.getText().toString()) &&
+                checkMobilePhonePattern(mobile.getText().toString());
+                //checkEmergencyPhone(emergencyPhone.getText().toString());
+    }
+
+    public boolean checkOnlyNumberPattern(String regex, String stringToMatch) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(stringToMatch);
+        return matcher.matches();
+    }
+
+    public boolean checkOnlyTextPattern(String onlyTextFields) {
+        if(!checkOnlyNumberPattern("([a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+)", onlyTextFields)) {
+            Toast.makeText(RegistrationActivity.this, "Les champs Nom, Prénom, Ville ne doivent contenir que des lettres.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkZipPattern(String zip) {
+        if(!checkOnlyNumberPattern("\\d{5}", zip)) {
+            Toast.makeText(RegistrationActivity.this, "Retapez un code postal valide.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkHomePhonePattern(String telMaison) {
+        if(!checkOnlyNumberPattern("^((\\+|00)33\\s?|0)[1-5](\\s?\\d{2}){4}$", telMaison)) {
+            Toast.makeText(RegistrationActivity.this, "Retapez un numéro fixe valide.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkMobilePhonePattern(String telMobile) {
+        if(!checkOnlyNumberPattern("^((\\+|00)33\\s?|0)[679](\\s?\\d{2}){4}$", telMobile)) {
+            Toast.makeText(RegistrationActivity.this, "Retapez un numéro de mobile valide.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkEmergencyPhone(String telUrgence) {
+        if(!checkOnlyNumberPattern("^((\\+|00)33\\s?|0)[1-5](\\s?\\d{2}){4}$", telUrgence)) {
+            if (!checkOnlyNumberPattern("^((\\+|00)33\\s?|0)[679](\\s?\\d{2}){4}$", telUrgence)) {
+                Toast.makeText(RegistrationActivity.this, "Retapez un numéro de téléphone valide.", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean checkPattern(String regex, String stringToMatch) {

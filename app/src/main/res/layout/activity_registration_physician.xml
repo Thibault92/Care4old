@@ -39,6 +39,23 @@
                 android:inputType="textPersonName"/>
         </TableRow>
 
+        <TableRow>
+            <LinearLayout
+                android:layout_span="2"
+                android:gravity="center"
+                android:paddingTop="25dp">
+                <Button
+                    android:id="@+id/validateCreation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suivant"/>
+                <Button
+                    android:id="@+id/raz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reset"/>
+            </LinearLayout>
+        </TableRow>
     </TableLayout>
 
 </ScrollView>

@@ -37,13 +37,13 @@
             android:textSize="20sp"/>
 
         <Button
-            android:id="@+id/nextCreation1"
+            android:id="@+id/patientAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Compte Patient"
             android:layout_weight="1"/>
         <Button
-            android:id="@+id/raz"
+            android:id="@+id/physicianAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Compte Médecin"
