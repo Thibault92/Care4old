@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <TableLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
+
+        <TextView
+            android:id="@+id/titre"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:gravity="center"
+            android:text="Formulaire Inscription (3/3)"
+            android:textStyle="bold"
+            android:textColor="#006699"
+            android:textSize="20sp"/>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/nomMedecin"
+                android:text="Nom de votre médecin"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/nomMedecinInput"
+                android:hint="nom medecin"
+                android:inputType="textPersonName"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/emailMedecin"
+                android:text="Email de votre médecin"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/emailMedecinInput"
+                android:hint="email medecin"
+                android:inputType="textPersonName"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/emergencyTel"
+                android:text="Appel en cas d'urgence"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/emergencyTelInput"
+                android:hint="Numéro particulier, professionnel"
+                android:inputType="number"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/birthday"
+                android:text="Date de naissance"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/birthdayPicker"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:text="date naissance"
+                android:textColor="#0000FF"
+                android:clickable="true"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/status"
+                android:paddingTop="10dp"
+                android:text="Statut marital"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+            <RadioGroup
+                android:id="@+id/statusChoice"
+                android:paddingTop="10dp"
+                android:orientation="vertical"
+                android:checkedButton="@+id/married">
+                <RadioButton
+                    android:id="@+id/married"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Marié(e)"/>
+                <RadioButton
+                    android:id="@+id/single"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Célibataire"
+                    android:paddingRight="5dp"/>
+                <RadioButton
+                    android:id="@+id/veuf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Veuf/Veuve"
+                    android:paddingRight="5dp"/>
+                <RadioButton
+                    android:id="@+id/divorced"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Divorcé(e)"
+                    android:paddingRight="5dp"/>
+                <RadioButton
+                    android:id="@+id/partner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Partenaire"
+                    android:paddingRight="5dp"/>
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/accompaniment"
+                android:paddingTop="10dp"
+                android:text="Aide à Domicile"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+            <RadioGroup
+                android:id="@+id/accompanimentChoice"
+                android:paddingTop="10dp"
+                android:orientation="vertical"
+                android:checkedButton="@+id/ouiaccompaniment">
+                <RadioButton
+                    android:id="@+id/ouiaccompaniment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Oui"/>
+                <RadioButton
+                    android:id="@+id/nonaccompaniment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Non"/>
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/residency"
+                android:paddingTop="10dp"
+                android:text="Résidence"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+            <RadioGroup
+                android:id="@+id/residencyChoice"
+                android:paddingTop="10dp"
+                android:orientation="vertical"
+                android:checkedButton="@+id/pavillon">
+                <RadioButton
+                    android:id="@+id/pavillon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Pavillon"/>
+                <RadioButton
+                    android:id="@+id/apartment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Appartement"/>
+                <RadioButton
+                    android:id="@+id/foyer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Foyer"
+                    android:checked="false" />
+                <RadioButton
+                    android:id="@+id/rpa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="RPA"/>
+                <RadioButton
+                    android:id="@+id/ehpad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="EHPAD"/>
+                <RadioButton
+                    android:id="@+id/adoma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Foyer Adoma"/>
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/financial"
+                android:paddingTop="10dp"
+                android:text="Aide Financière"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+            <RadioGroup
+                android:id="@+id/financialChoice"
+                android:paddingTop="10dp"
+                android:orientation="vertical"
+                android:checkedButton="@+id/ouifinancier">
+                <RadioButton
+                    android:id="@+id/ouifinancier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Oui"/>
+                <RadioButton
+                    android:id="@+id/nonfinancier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Non"/>
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/domicile"
+                android:paddingTop="10dp"
+                android:text="Aide à Domicile"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+            <RadioGroup
+                android:id="@+id/domicileChoice"
+                android:paddingTop="10dp"
+                android:orientation="vertical"
+                android:checkedButton="@+id/ouidomicile">
+                <RadioButton
+                    android:id="@+id/ouidomicile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Oui"/>
+                <RadioButton
+                    android:id="@+id/nondomicile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Non"/>
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow>
+            <LinearLayout
+                android:layout_span="2"
+                android:gravity="center"
+                android:paddingTop="25dp">
+                <Button
+                    android:id="@+id/nextCreation1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suivant"/>
+                <Button
+                    android:id="@+id/raz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reset"/>
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+</ScrollView>

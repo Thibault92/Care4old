@@ -1,16 +1,222 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="com.example.tinyl.care4old.RegistrationActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 
-    <TextView
-            android:text="@string/hello_world"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+    <TableLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/titre"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:gravity="center"
+            android:text="Formulaire Inscription (1/3)"
+            android:textStyle="bold"
+            android:textColor="#006699"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/titreConnexion"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Données de connexion :"
+            android:textStyle="bold"
+            android:textColor="#006699"
+            android:textSize="20sp"/>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/identifiantInscription"
+                android:text="Identifiant"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/identifiantInscriptionInput"
+                android:hint="email"
+                android:inputType="textPersonName"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/passwordInscription"
+                android:text="Mot De Passe"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/passwordInscriptionInput"
+                android:hint="mot de passe"
+                android:inputType="textPassword"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/confirmationPassword"
+                android:text="Confirmer le mot de passe"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/confirmationPasswordInput"
+                android:hint="confirmer le mot de passe"
+                android:inputType="textPassword"/>
+        </TableRow>
+
+        <TextView
+            android:id="@+id/titreInformations"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Données générales :"
+            android:textStyle="bold"
+            android:textColor="#006699"
+            android:textSize="20sp"/>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/gender"
+                android:paddingTop="10dp"
+                android:text="Sexe"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+            <RadioGroup
+                android:id="@+id/genderChoice"
+                android:paddingTop="10dp"
+                android:orientation="vertical"
+                android:checkedButton="@+id/male">
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Homme"/>
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Femme"/>
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/name"
+                android:text="Nom de famille"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/familyNameInput"
+                android:hint="nom de famille"
+                android:inputType="textPersonName"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/firstName"
+                android:text="Prénom"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/firstNameInput"
+                android:hint="prénom"
+                android:inputType="textPersonName"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/address"
+                android:text="Adresse"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/addressInput"
+                android:hint="adresse"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/zip"
+                android:text="Code postal"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/zipInput"
+                android:hint="code postal"
+                android:inputType="number"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/city"
+                android:text="Ville"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/cityInput"
+                android:hint="ville"
+                android:inputType="textPersonName"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/homeTel"
+                android:text="Téléphone fixe"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/homeTelInput"
+                android:hint="tel.fixe"
+                android:inputType="number"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/mobileTel"
+                android:text="Téléphone mobile"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <EditText
+                android:id="@+id/mobileTelInput"
+                android:hint="tel.mobile"
+                android:inputType="number"/>
+        </TableRow>
+
+
+
+
+        <TableRow>
+            <LinearLayout
+                android:layout_span="2"
+                android:gravity="center"
+                android:paddingTop="25dp">
+                <Button
+                    android:id="@+id/nextCreation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suivant"/>
+                <Button
+                    android:id="@+id/raz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reset"/>
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+</ScrollView>
