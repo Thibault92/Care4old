@@ -257,7 +257,14 @@ public class RegistrationActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            //sendRegistration();
+            try{
+                sendRegistration();
+            }
+            catch(Exception ex)
+            {
+                
+            }
+
 
         }
     };
@@ -286,6 +293,9 @@ public class RegistrationActivity extends AppCompatActivity {
         }
     };
 
+
+
+// Check all Edit Texts Patterns
     public boolean checkPatterns(){
         return
                 checkEmailPattern(email.getText().toString()) &&
@@ -397,6 +407,11 @@ public class RegistrationActivity extends AppCompatActivity {
         public void afterTextChanged(Editable s) {
         }
     };
+
+
+
+
+
     private boolean sendRegistration() throws IOException {
         String url = "https://care4old.ajoubert.com/register";
         URL obj = new URL(url);
@@ -409,6 +424,29 @@ public class RegistrationActivity extends AppCompatActivity {
 
         String urlParameters = "email="+this.email;
         urlParameters = urlParameters + "&pass="+this.pass;
+        urlParameters = urlParameters + "&account="+this.account_type;
+
+        urlParameters = urlParameters + "&gender="+this.gender;
+        urlParameters = urlParameters + "&name="+this.name;
+        urlParameters = urlParameters + "&firstname="+this.firstname;
+        urlParameters = urlParameters + "&street="+this.street;
+        urlParameters = urlParameters + "&zip="+this.zip;
+        urlParameters = urlParameters + "&city="+this.city;
+        urlParameters = urlParameters + "&phone="+this.phone;
+        urlParameters = urlParameters + "&mobile="+this.mobile;
+
+        urlParameters = urlParameters + "&medecin_name="+this.physicianName;
+        urlParameters = urlParameters + "&email_medecin="+this.physicianMail;
+        urlParameters = urlParameters + "&birthday="+this.birthday;
+        urlParameters = urlParameters + "&emergency="+this.emergency;
+        urlParameters = urlParameters + "&status="+this.status;
+        urlParameters = urlParameters + "&accompaniment="+this.accompaniment;
+        urlParameters = urlParameters + "&residency="+this.residency;
+        urlParameters = urlParameters + "&isFinancial="+this.isFinancial;
+        urlParameters = urlParameters + "&isHelp="+this.isHelp;
+
+        urlParameters = urlParameters + "&officename="+this.officename;
+
 
         // Send post request
         con.setDoOutput(true);
