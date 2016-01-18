@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,8 +28,6 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.net.ssl.HttpsURLConnection;
-
 public class RegistrationActivity extends AppCompatActivity {
 
     // Connexion Data
@@ -39,6 +38,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     // Common data
     private RadioGroup gender = null;
+    private RadioButton genderButton;
     private EditText name;
     private EditText firstname;
     private EditText street;
@@ -54,10 +54,15 @@ public class RegistrationActivity extends AppCompatActivity {
     private TextView birthday;
     private EditText emergency;
     private RadioGroup status = null;
+    private RadioButton statusButton;
     private RadioGroup accompaniment = null;
+    private RadioButton accompanimentButton;
     private RadioGroup residency = null;
+    private RadioButton residencyButton;
     private RadioGroup isFinancial = null;
+    private RadioButton isFinancialButton;
     private RadioGroup isHelp = null;
+    private RadioButton isHelpButton;
 
     // Professional Data
     private EditText officename;
@@ -102,6 +107,7 @@ public class RegistrationActivity extends AppCompatActivity {
         passConfirm = (EditText)findViewById(R.id.confirmationPasswordInput);
 
         gender      = (RadioGroup)findViewById(R.id.genderChoice);
+        genderButton= (RadioButton)findViewById(gender.getCheckedRadioButtonId());
         name        = (EditText)findViewById(R.id.familyNameInput);
         firstname   = (EditText)findViewById(R.id.firstNameInput);
         street      = (EditText)findViewById(R.id.addressInput);
@@ -121,7 +127,7 @@ public class RegistrationActivity extends AppCompatActivity {
         pass.addTextChangedListener(textWatcher);
         passConfirm.addTextChangedListener(textWatcher);
 
-        gender.getCheckedRadioButtonId();
+        //gender.getCheckedRadioButtonId();
         name.addTextChangedListener(textWatcher);
         firstname.addTextChangedListener(textWatcher);
         street.addTextChangedListener(textWatcher);
@@ -191,11 +197,15 @@ public class RegistrationActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            try{
-                sendRegistration();
-            }
-            catch(Exception ex) {
-            }
+            new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        sendRegistration();
+                    } catch (IOException e) {
+                        Log.d("exception", e.toString());
+                    }
+                }
+            }).start();
 
         }
     };
@@ -233,10 +243,15 @@ public class RegistrationActivity extends AppCompatActivity {
         birthday        = (TextView)findViewById(R.id.birthdayPicker);
         emergency       = (EditText)findViewById(R.id.emergencyTelInput);
         status          = (RadioGroup)findViewById(R.id.statusChoice);
+        statusButton    = (RadioButton)findViewById(status.getCheckedRadioButtonId());
         accompaniment   = (RadioGroup)findViewById(R.id.accompanimentChoice);
+        accompanimentButton = (RadioButton)findViewById(accompaniment.getCheckedRadioButtonId());
         residency       = (RadioGroup)findViewById(R.id.residencyChoice);
+        residencyButton = (RadioButton)findViewById(residency.getCheckedRadioButtonId());
         isFinancial     = (RadioGroup)findViewById(R.id.financialChoice);
+        isFinancialButton = (RadioButton)findViewById(isFinancial.getCheckedRadioButtonId());
         isHelp          = (RadioGroup)findViewById(R.id.domicileChoice);
+        isHelpButton = (RadioButton)findViewById(isHelp.getCheckedRadioButtonId());
 
         validatePatient = (Button)findViewById(R.id.validateCreation);
         resetPatientData = (Button) findViewById(R.id.raz);
@@ -248,11 +263,11 @@ public class RegistrationActivity extends AppCompatActivity {
         physicianMail.addTextChangedListener(textWatcher);
         birthday.addTextChangedListener(textWatcher);
         emergency.addTextChangedListener(textWatcher);
-        status.getCheckedRadioButtonId();
-        accompaniment.getCheckedRadioButtonId();
-        residency.getCheckedRadioButtonId();
-        isFinancial.getCheckedRadioButtonId();
-        isHelp.getCheckedRadioButtonId();
+        //status.getCheckedRadioButtonId();
+        //accompaniment.getCheckedRadioButtonId();
+        //residency.getCheckedRadioButtonId();
+        //isFinancial.getCheckedRadioButtonId();
+        //isHelp.getCheckedRadioButtonId();
 
         validatePatient.setOnClickListener(savePatientData);
         resetPatientData.setOnClickListener(resetPatient);
@@ -429,30 +444,48 @@ public class RegistrationActivity extends AppCompatActivity {
         con.setRequestProperty("User-Agent", "Mozilla/5.0");
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
-        String urlParameters = "email="+this.email;
-        urlParameters = urlParameters + "&pass="+this.pass;
-        urlParameters = urlParameters + "&account="+this.account_type;
+        String urlParameters = null;
 
-        urlParameters = urlParameters + "&gender="+this.gender;
-        urlParameters = urlParameters + "&name="+this.name;
-        urlParameters = urlParameters + "&firstname="+this.firstname;
-        urlParameters = urlParameters + "&street="+this.street;
-        urlParameters = urlParameters + "&zip="+this.zip;
-        urlParameters = urlParameters + "&city="+this.city;
-        urlParameters = urlParameters + "&phone="+this.phone;
-        urlParameters = urlParameters + "&mobile="+this.mobile;
+        if (account_type == 0){
+            urlParameters = "email="+this.email.getText().toString();
+            urlParameters = urlParameters + "&pass="+this.pass.getText().toString();
+            urlParameters = urlParameters + "&account="+Integer.toString(account_type);
 
-        urlParameters = urlParameters + "&medecin_name="+this.physicianName;
-        urlParameters = urlParameters + "&email_medecin="+this.physicianMail;
-        urlParameters = urlParameters + "&birthday="+this.birthday;
-        urlParameters = urlParameters + "&emergency="+this.emergency;
-        urlParameters = urlParameters + "&status="+this.status;
-        urlParameters = urlParameters + "&accompaniment="+this.accompaniment;
-        urlParameters = urlParameters + "&residency="+this.residency;
-        urlParameters = urlParameters + "&isFinancial="+this.isFinancial;
-        urlParameters = urlParameters + "&isHelp="+this.isHelp;
+            urlParameters = urlParameters + "&gender="+this.genderButton.getText().toString();
+            urlParameters = urlParameters + "&name="+this.name.getText().toString();
+            urlParameters = urlParameters + "&firstname="+this.firstname.getText().toString();
+            urlParameters = urlParameters + "&street="+this.street.getText().toString();
+            urlParameters = urlParameters + "&zip="+this.zip.getText().toString();
+            urlParameters = urlParameters + "&city="+this.city.getText().toString();
+            urlParameters = urlParameters + "&phone="+this.phone.getText().toString();
+            urlParameters = urlParameters + "&mobile="+this.mobile.getText().toString();
 
-        urlParameters = urlParameters + "&officename="+this.officename;
+            urlParameters = urlParameters + "&medecin_name="+this.physicianName.getText().toString();
+            urlParameters = urlParameters + "&email_medecin="+this.physicianMail.getText().toString();
+            urlParameters = urlParameters + "&birthday="+this.birthday.getText().toString();
+            urlParameters = urlParameters + "&emergency="+this.emergency.getText().toString();
+            urlParameters = urlParameters + "&status="+this.statusButton.getText().toString();
+            urlParameters = urlParameters + "&accompaniment="+this.accompanimentButton.getText().toString();
+            urlParameters = urlParameters + "&residency="+this.residencyButton.getText().toString();
+            urlParameters = urlParameters + "&isFinancial="+this.isFinancialButton.getText().toString();
+            urlParameters = urlParameters + "&isHelp="+this.isHelpButton.getText().toString();
+        }
+        else if (account_type == 1){
+            urlParameters = "email="+this.email.getText().toString();
+            urlParameters = urlParameters + "&pass="+this.pass.getText().toString();
+            urlParameters = urlParameters + "&account="+Integer.toString(account_type);
+
+            urlParameters = urlParameters + "&gender="+this.genderButton.getText().toString();
+            urlParameters = urlParameters + "&name="+this.name.getText().toString();
+            urlParameters = urlParameters + "&firstname="+this.firstname.getText().toString();
+            urlParameters = urlParameters + "&street="+this.street.getText().toString();
+            urlParameters = urlParameters + "&zip="+this.zip.getText().toString();
+            urlParameters = urlParameters + "&city="+this.city.getText().toString();
+            urlParameters = urlParameters + "&phone="+this.phone.getText().toString();
+            urlParameters = urlParameters + "&mobile="+this.mobile.getText().toString();
+
+            urlParameters = urlParameters + "&officename="+this.officename.getText().toString();
+        }
 
 
         // Send post request
