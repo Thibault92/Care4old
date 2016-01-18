@@ -48,7 +48,7 @@ public class Hospitalisation extends AppCompatActivity {
 
     }
 
-//Load Layouts
+//Chage les layouts
     private void chargeViewHospital() {
         startDateDisplay = (TextView) findViewById(R.id.displayEntryDate);
         endDateDisplay   = (TextView) findViewById(R.id.displayExitDate);
@@ -70,7 +70,7 @@ public class Hospitalisation extends AppCompatActivity {
     }
 
 
-//Load Listeners
+//Charge les listeners
     private void chargeListeners(){
 
         startDateDisplay.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +98,7 @@ public class Hospitalisation extends AppCompatActivity {
         });
     }
 
-
+// MAJ de la date une fois qu'elle est sélectionnée
     private void updateStartDisplay() {
         startDateDisplay.setText(
                 new StringBuilder()
@@ -121,6 +121,7 @@ public class Hospitalisation extends AppCompatActivity {
 
     }
 
+//Sélectionne la date choisie dans le DatePicker
     private DatePickerDialog.OnDateSetListener mDateSetListener =
             new DatePickerDialog.OnDateSetListener() {
 
@@ -145,6 +146,7 @@ public class Hospitalisation extends AppCompatActivity {
                 }
             };
 
+// Ouvre une pop-up permettant de choisir une date
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
@@ -160,6 +162,7 @@ public class Hospitalisation extends AppCompatActivity {
         return null;
     }
 
+// permet de mettre des messages par défaut dans les textView et EditText
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -179,6 +182,7 @@ public class Hospitalisation extends AppCompatActivity {
         finish();
     }
 
+//Permet de recharger la vue si besoin de réinitialisation
     private View.OnClickListener reset = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

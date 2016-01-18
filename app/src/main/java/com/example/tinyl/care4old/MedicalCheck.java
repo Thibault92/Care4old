@@ -50,11 +50,6 @@ public class MedicalCheck extends AppCompatActivity {
     EditText CRP = null;
     EditText albumine = null;
 
-    String Height, Weight, Bmi, Albumin, Crp, VitaminD, Frequency, Pressure, Gir;
-
-    private String[] medicalData = {"a","z","e","r","t","y","u","i"};
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +62,7 @@ public class MedicalCheck extends AppCompatActivity {
 
 
 
-
+//Initialisation des variables
     private void chargeViewMedCheck(){
         envoyer = (Button)findViewById(R.id.calcul);
         taille  = (EditText)findViewById(R.id.sc_height);
@@ -92,7 +87,7 @@ public class MedicalCheck extends AppCompatActivity {
 
     }
 
-
+//CHargement des listeners
     private void chargeListeners(){
 
         envoyer.setOnClickListener(envoyerListener);
@@ -118,6 +113,8 @@ public class MedicalCheck extends AppCompatActivity {
 
             public void onClick(View v)
             {
+
+                // ouvre un nouveau thread permettant a la connexion de se faire en arrière-plan
                 new Thread(new Runnable() {
                     public void run() {
                         try {

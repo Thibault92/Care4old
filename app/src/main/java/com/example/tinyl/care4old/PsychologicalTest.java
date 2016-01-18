@@ -148,6 +148,7 @@ public class PsychologicalTest extends AppCompatActivity {
 
     }
 
+// Permet dde récupérer chaque valeur
     AdapterView.OnItemSelectedListener valueSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> spinner, View container,int position, long id) {
