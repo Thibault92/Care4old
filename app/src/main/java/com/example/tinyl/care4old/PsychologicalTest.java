@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,15 +15,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 ;
 
@@ -121,15 +122,15 @@ public class PsychologicalTest extends AppCompatActivity {
 
             public void onClick(View v)
             {
-                try{
-
-                    // CALL GetText method to make post method call
-                    GetText();
-                }
-                catch(Exception ex)
-                {
-                    //content.setText(" url exeption! " );
-                }
+                new Thread(new Runnable() {
+                    public void run() {
+                        try {
+                            sendRegistration();
+                        } catch (IOException e) {
+                            Log.d("exception", e.toString());
+                        }
+                    }
+                }).start();
             }
         });
     }
@@ -222,82 +223,51 @@ public class PsychologicalTest extends AppCompatActivity {
     };
 
 
-    public  void  GetText()  throws UnsupportedEncodingException
-    {
+    private boolean sendRegistration() throws IOException {
+        String url = "http://care4old.ajoubert.com/psycho";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        //String Total, GrecoGlobal, GrecoImmediat, GrecoDiffere;
-        // Get user defined values
-        Total           = total.getText().toString();
-        GrecoGlobal     = grecoGlobal.getText().toString();
-        GrecoImmediat   = grecoImmediat.getText().toString();
-        GrecoDiffere    = grecoDiff.getText().toString();
+        //add request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
-        // Create data variable for sent values to server
+        String urlParameters = null;
 
-        String data = URLEncoder.encode("minibesttest_score", "UTF-8")
-                + "=" + URLEncoder.encode(Total, "UTF-8");
-
-        data += "&" + URLEncoder.encode("greco_global", "UTF-8") + "="
-                + URLEncoder.encode(GrecoGlobal, "UTF-8");
-
-        data += "&" + URLEncoder.encode("greco_immediat", "UTF-8")
-                + "=" + URLEncoder.encode(GrecoImmediat, "UTF-8");
-
-        data += "&" + URLEncoder.encode("greco_differe", "UTF-8")
-                + "=" + URLEncoder.encode(GrecoDiffere, "UTF-8");
-
-        String text = "";
-        BufferedReader reader=null;
-
-        // Send data
-        try
-        {
-
-            // Defined URL  where to send data
-            URL url = new URL("http://https://care4old.ajoubert.com/psycho");
-
-            // Send POST data request
-
-            URLConnection conn = url.openConnection();
-            conn.setDoOutput(true);
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write( data );
-            wr.flush();
-
-            // Get the server response
-
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-
-            // Read Server Response
-            while((line = reader.readLine()) != null)
-            {
-                // Append server response in string
-                sb.append(line + "\n");
-            }
+        urlParameters = urlParameters + "&date_psycho="+this.mDateDisplay.getText().toString();
+        urlParameters = urlParameters + "&minibesttest_score="+this.total.getText().toString();
+        urlParameters = urlParameters + "&greco_global="+this.grecoGlobal.getText().toString();
+        urlParameters = urlParameters + "&greco_immediat="+this.grecoImmediat.getText().toString();
+        urlParameters = urlParameters + "&greco_differe="+this.grecoDiff.getText().toString();
 
 
-            text = sb.toString();
+
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(urlParameters);
+        wr.flush();
+        wr.close();
+
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'POST' request to URL : " + url);
+        System.out.println("Post parameters : " + urlParameters);
+        System.out.println("Response Code : " + responseCode);
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder response = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
         }
-        catch(Exception ex)
-        {
+        in.close();
 
-        }
-        finally
-        {
-            try
-            {
-
-                reader.close();
-            }
-
-            catch(Exception ex) {}
-        }
-
-        // Show response on activity
-        //content.setText( text  );
-
+        //print result
+        Log.d("POST Connection result", response.toString());
+        return Objects.equals(response.toString(), "success");
     }
 
 

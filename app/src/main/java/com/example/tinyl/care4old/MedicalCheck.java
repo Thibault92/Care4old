@@ -8,27 +8,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import java.io.BufferedReader;
-import java.io.InputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class MedicalCheck extends AppCompatActivity {
 
@@ -123,15 +118,15 @@ public class MedicalCheck extends AppCompatActivity {
 
             public void onClick(View v)
             {
-                try{
-
-                    // CALL GetText method to make post method call
-                    GetText();
-                }
-                catch(Exception ex)
-                {
-                    //content.setText(" url exeption! " );
-                }
+                new Thread(new Runnable() {
+                    public void run() {
+                        try {
+                            sendRegistration();
+                        } catch (IOException e) {
+                            Log.d("exception", e.toString());
+                        }
+                    }
+                }).start();
             }
         });
     }
@@ -191,7 +186,7 @@ public class MedicalCheck extends AppCompatActivity {
         }
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            oldFields();
+            //oldFields();
         }
         @Override
         public void afterTextChanged(Editable s) {
@@ -236,121 +231,80 @@ public class MedicalCheck extends AppCompatActivity {
         }
     };
 
-    public  void  GetText()  throws UnsupportedEncodingException
-    {
+    private boolean sendRegistration() throws IOException {
+        String url = "http://care4old.ajoubert.com/medical_check";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        //String Height, Weight, Bmi, Albumin, Crp, VitaminD, Frequency, Pressure, Gir;
-        // Get user defined values
-        Height      = taille.getText().toString();
-        Weight      = poids.getText().toString();
-        Bmi         = result.getText().toString();
-        Albumin     = albumine.getText().toString();
-        Crp         = CRP.getText().toString();
-        VitaminD    = vitD.getText().toString();
-        Frequency   = frequency.getText().toString();
-        Pressure    = pressureScore.getText().toString();
+        //add request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
-        // Create data variable for sent values to server
+        String urlParameters = null;
 
-        String data = URLEncoder.encode("height", "UTF-8")
-                + "=" + URLEncoder.encode(Height, "UTF-8");
-
-        data += "&" + URLEncoder.encode("weight", "UTF-8") + "="
-                + URLEncoder.encode(Weight, "UTF-8");
-
-        data += "&" + URLEncoder.encode("bmi", "UTF-8")
-                + "=" + URLEncoder.encode(Bmi, "UTF-8");
-
-        data += "&" + URLEncoder.encode("albumin", "UTF-8")
-                + "=" + URLEncoder.encode(Albumin, "UTF-8");
-
-        data += "&" + URLEncoder.encode("crp", "UTF-8")
-                + "=" + URLEncoder.encode(Crp, "UTF-8");
-
-        data += "&" + URLEncoder.encode("vitamin_d", "UTF-8")
-                + "=" + URLEncoder.encode(VitaminD, "UTF-8");
-
-        data += "&" + URLEncoder.encode("frequency", "UTF-8")
-                + "=" + URLEncoder.encode(Frequency, "UTF-8");
-
-        data += "&" + URLEncoder.encode("pressure", "UTF-8")
-                + "=" + URLEncoder.encode(Pressure, "UTF-8");
-
-        /*data += "&" + URLEncoder.encode("pass", "UTF-8")
-                + "=" + URLEncoder.encode(Albumin, "UTF-8");*/
-
-        String text = "";
-        BufferedReader reader=null;
-
-        // Send data
-        try
-        {
-
-            // Defined URL  where to send data
-            URL url = new URL("http://https://care4old.ajoubert.com/medical_check");
-
-            // Send POST data request
-
-            URLConnection conn = url.openConnection();
-            conn.setDoOutput(true);
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write( data );
-            wr.flush();
-
-            // Get the server response
-
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-
-            // Read Server Response
-            while((line = reader.readLine()) != null)
-            {
-                // Append server response in string
-                sb.append(line + "\n");
-            }
+            urlParameters = urlParameters + "&date_visit="+this.mDateDisplay.getText().toString();
+            urlParameters = urlParameters + "&height="+this.taille.getText().toString();
+            urlParameters = urlParameters + "&weight="+this.poids.getText().toString();
+            urlParameters = urlParameters + "&bmi="+this.result.getText().toString();
+            urlParameters = urlParameters + "&albumin="+this.albumine.getText().toString();
+            urlParameters = urlParameters + "&crp="+this.CRP.getText().toString();
+            urlParameters = urlParameters + "&vitamin_d="+this.vitD.getText().toString();
+            urlParameters = urlParameters + "&frequency="+this.frequency.getText().toString();
+            urlParameters = urlParameters + "&pressure="+this.pressureScore.getText().toString();
+            //urlParameters = urlParameters + "&gir="+this.mobile.getText().toString();
 
 
-            text = sb.toString();
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(urlParameters);
+        wr.flush();
+        wr.close();
+
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'POST' request to URL : " + url);
+        System.out.println("Post parameters : " + urlParameters);
+        System.out.println("Response Code : " + responseCode);
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder response = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
         }
-        catch(Exception ex)
-        {
+        in.close();
 
-        }
-        finally
-        {
-            try
-            {
-
-                reader.close();
-            }
-
-            catch(Exception ex) {}
-        }
-
-        // Show response on activity
-        //content.setText( text  );
-
+        //print result
+        Log.d("POST Connection result", response.toString());
+        return Objects.equals(response.toString(), "success");
     }
 
-    private void getInfoFromDB(){
-
-
-        InputStream is = null;
-
-        try{
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("https://are4old.ajoubert.com/medical_check");
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity entity = response.getEntity();
-            is = entity.getContent();
-        }catch(Exception e){
-            Log.e("log_tag", "Error in http connection" + e.toString());
-        }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_registration, menu);
+        return true;
     }
 
-    public void oldFields(){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /*public void oldFields(){
 
         //String Height, Weight, Bmi, Albumin, Crp, VitaminD, Frequency, Pressure, Gir;
 
@@ -363,6 +317,6 @@ public class MedicalCheck extends AppCompatActivity {
         frequency.setText(medicalData[6]);
         pressureScore.setText(medicalData[7]);
 
-    }
+    }*/
 
 }

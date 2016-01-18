@@ -13,13 +13,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.Calendar;
 
 public class Hospitalisation extends AppCompatActivity {
@@ -100,17 +93,7 @@ public class Hospitalisation extends AppCompatActivity {
 
         saveData.setOnClickListener(new Button.OnClickListener(){
 
-            public void onClick(View v)
-            {
-                try{
-
-                    // CALL GetText method to make post method call
-                    GetText();
-                }
-                catch(Exception ex)
-                {
-                    //content.setText(" url exeption! " );
-                }
+            public void onClick(View v) {
             }
         });
     }
@@ -207,79 +190,4 @@ public class Hospitalisation extends AppCompatActivity {
         }
     };
 
-    public  void  GetText()  throws UnsupportedEncodingException
-    {
-
-        //String dateStart, dateEnd, reason;
-        // Get user defined values
-        dateStart   = startDateDisplay.getText().toString();
-        dateEnd     = endDateDisplay.getText().toString();
-        reason      = commentary.getText().toString();
-
-
-        // Create data variable for sent values to server
-
-        String data = URLEncoder.encode("dateStart", "UTF-8")
-                + "=" + URLEncoder.encode(dateStart, "UTF-8");
-
-        data += "&" + URLEncoder.encode("dateEnd", "UTF-8") + "="
-                + URLEncoder.encode(dateEnd, "UTF-8");
-
-        data += "&" + URLEncoder.encode("reason", "UTF-8")
-                + "=" + URLEncoder.encode(reason, "UTF-8");
-
-
-        String text = "";
-        BufferedReader reader=null;
-
-        // Send data
-        try
-        {
-
-            // Defined URL  where to send data
-            URL url = new URL("http://https://care4old.ajoubert.com/hospitalisation");
-
-            // Send POST data request
-
-            URLConnection conn = url.openConnection();
-            conn.setDoOutput(true);
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write( data );
-            wr.flush();
-
-            // Get the server response
-
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-
-            // Read Server Response
-            while((line = reader.readLine()) != null)
-            {
-                // Append server response in string
-                sb.append(line + "\n");
-            }
-
-
-            text = sb.toString();
-        }
-        catch(Exception ex)
-        {
-
-        }
-        finally
-        {
-            try
-            {
-
-                reader.close();
-            }
-
-            catch(Exception ex) {}
-        }
-
-        // Show response on activity
-        //content.setText( text  );
-
-    }
 }

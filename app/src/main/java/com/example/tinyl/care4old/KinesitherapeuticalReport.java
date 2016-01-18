@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,15 +15,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class KinesitherapeuticalReport extends AppCompatActivity {
 
@@ -108,15 +109,15 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
 
             public void onClick(View v)
             {
-                try{
-
-                    // CALL GetText method to make post method call
-                    GetText();
-                }
-                catch(Exception ex)
-                {
-                    //content.setText(" url exeption! " );
-                }
+                new Thread(new Runnable() {
+                    public void run() {
+                        try {
+                            sendRegistration();
+                        } catch (IOException e) {
+                            Log.d("exception", e.toString());
+                        }
+                    }
+                }).start();
             }
         });
 
@@ -204,84 +205,52 @@ public class KinesitherapeuticalReport extends AppCompatActivity {
         }
     };
 
-    public  void  GetText()  throws UnsupportedEncodingException
-    {
+    private boolean sendRegistration() throws IOException {
+        String url = "http://care4old.ajoubert.com/kine";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        //String Total, SlowWalk, FastWalk, GetUp;
-        // Get user defined values
-        Total       = total.getText().toString();
-        SlowWalk    = slowWalk.getText().toString();
-        FastWalk    = fastWalk.getText().toString();
-        GetUp       = getUp.getText().toString();
+        //add request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
+        String urlParameters = null;
 
-        // Create data variable for sent values to server
-
-        String data = URLEncoder.encode("tinetti_poma", "UTF-8")
-                + "=" + URLEncoder.encode(Total, "UTF-8");
-
-        data += "&" + URLEncoder.encode("getupandgo", "UTF-8")
-                + "=" + URLEncoder.encode(GetUp, "UTF-8");
-
-        data += "&" + URLEncoder.encode("slow_walk", "UTF-8") + "="
-                + URLEncoder.encode(SlowWalk, "UTF-8");
-
-        data += "&" + URLEncoder.encode("fast_walk", "UTF-8")
-                + "=" + URLEncoder.encode(FastWalk, "UTF-8");
+        urlParameters = urlParameters + "&date_psycho="+this.mDateDisplay.getText().toString();
+        urlParameters = urlParameters + "&minibesttest_score="+this.total.getText().toString();
+        urlParameters = urlParameters + "&greco_global="+this.slowWalk.getText().toString();
+        urlParameters = urlParameters + "&greco_immediat="+this.fastWalk.getText().toString();
+        urlParameters = urlParameters + "&greco_differe="+this.getUp.getText().toString();
 
 
-        String text = "";
-        BufferedReader reader=null;
 
-        // Send data
-        try
-        {
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(urlParameters);
+        wr.flush();
+        wr.close();
 
-            // Defined URL  where to send data
-            URL url = new URL("https://care4old.ajoubert.com/kine");
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'POST' request to URL : " + url);
+        System.out.println("Post parameters : " + urlParameters);
+        System.out.println("Response Code : " + responseCode);
 
-            // Send POST data request
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder response = new StringBuilder();
 
-            URLConnection conn = url.openConnection();
-            conn.setDoOutput(true);
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write( data );
-            wr.flush();
-
-            // Get the server response
-
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-
-            // Read Server Response
-            while((line = reader.readLine()) != null)
-            {
-                // Append server response in string
-                sb.append(line + "\n");
-            }
-
-
-            text = sb.toString();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
         }
-        catch(Exception ex)
-        {
+        in.close();
 
-        }
-        finally
-        {
-            try
-            {
-
-                reader.close();
-            }
-
-            catch(Exception ex) {}
-        }
-
-        // Show response on activity
-        //content.setText( text  );
-
+        //print result
+        Log.d("POST Connection result", response.toString());
+        return Objects.equals(response.toString(), "success");
     }
+
 
 }
